@@ -24,6 +24,18 @@
 				/* translators: 1: Theme name, 2: Theme author. */
 				printf( esc_html__( 'Theme: %1$s by %2$s.', 'lifeoutdoors-theme' ), 'lifeoutdoors-theme', '<a href="https://wp.bcitwebdeveloper.ca/">FWD 37 - Team 5</a>' );
 				?>
+
+         <!-- Display footer menus        -->
+
+        <div class="footer-menus">
+            <nav id="footer-navigation" class="footer-navigation">
+                <?php wp_nav_menu( array( 'theme_location' => 'footer-left') ); ?>
+            </nav>     
+            <nav id="footer-navigation" class="footer-navigation">
+                <?php wp_nav_menu( array( 'theme_location' => 'footer-right') ); ?>
+            </nav>		
+		</div><!-- .footer-menus -->
+        
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
