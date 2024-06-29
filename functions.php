@@ -49,7 +49,10 @@ function lifeoutdoors_theme_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'lifeoutdoors-theme' ),
+			'header' => esc_html__( 'Primary', 'lifeoutdoors-theme' ),
+            'header-right' => esc_html__( 'Header - Right Side', 'lifeoutdoors-theme' ),
+            'footer-left' => esc_html__( 'Footer - Left Side', 'lifeoutdoors-theme' ),
+            'footer-right' => esc_html__( 'Footer - Right Side', 'lifeoutdoors-theme' ),
 		)
 	);
 
