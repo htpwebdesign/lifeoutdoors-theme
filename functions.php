@@ -46,7 +46,7 @@ function lifeoutdoors_theme_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
+	// This theme uses wp_nav_menu() in four locations.
 	register_nav_menus(
 		array(
 			'header' => esc_html__( 'Primary', 'lifeoutdoors-theme' ),
