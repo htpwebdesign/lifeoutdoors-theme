@@ -23,10 +23,21 @@ get_header();
 
 			get_template_part( 'template-parts/content', 'page' );
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+            // Custom query to display testimonials
+            $args = array(
+                'post_type'      => 'out-testimonial',
+                'posts_per_page' => 4,
+            );
+            $query = new WP_Query( $args );
+            if ( $query -> have_posts() ){
+            echo '<section class="testimonials"><h2>Testimonials</h2>';
+                while ( $query -> have_posts() ) {
+                    $query -> the_post();
+                    the_content();
+                }
+                wp_reset_postdata();
+            echo '</section>';    
+            }
 
 		endwhile; // End of the loop.
 		?>
@@ -34,5 +45,4 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();
