@@ -15,17 +15,29 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
 
-        <div class="image-slider">
-            <div><img src="<?php echo get_template_directory_uri(); ?>/images/hero1.jpg" alt="lake with friends"></div>
-            <div><img src="<?php echo get_template_directory_uri(); ?>/images/hero2.jpg" alt="hiking img"></div>
-            <div><img src="<?php echo get_template_directory_uri(); ?>/images/hero3.jpg" alt="hiking img"></div>
-            <div><img src="<?php echo get_template_directory_uri(); ?>/images/hero4.jpg" alt="sunset img with family"></div>
-        </div>
+    
+    <?php
+    while ( have_posts() ) :
+        the_post();
 
+        get_template_part( 'template-parts/content', 'page' );
 
-        <?php
+        $home_slider = get_field('hero_images');
+
+        if ($home_slider && is_array($home_slider)) :
+            ?>
+            <section class="image-slider">
+                <?php foreach ($home_slider as $image) : ?>
+                    <div class="slide">
+                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+                    </div>
+                <?php endforeach; ?>
+            </section>
+            <?php
+        endif;
+
         echo '<section class="products-by-categories"><h2>Products by Categories</h2><div class="category-products">';
 
         $categories = get_terms('product_cat', array('hide_empty' => true));
@@ -60,11 +72,9 @@ get_header();
         }
 
         echo '</div></section>';
-        ?>
 
-        <?php
         echo '<section class="on-sale-products"><h2>On Sale</h2><div class="on-sale-slider">';
-    
+
         $on_sale_args = array(
             'post_type'      => 'product',
             'posts_per_page' => 4,
@@ -91,11 +101,9 @@ get_header();
             }
             wp_reset_postdata();
         }
-    
-        echo '</div></section>';
-        ?>
 
-        <?php
+        echo '</div></section>';
+
         echo '<section class="workshops-this-month"><h2>Workshops This Month</h2><div class="workshop-list">';
 
         $current_month = date('m');
@@ -134,34 +142,27 @@ get_header();
             echo '<p>No workshops scheduled for this month.</p>';
         }
         echo '</div></section>';
-        ?>
 
-
-		<?php
-		while ( have_posts() ) :
-			the_post();
-
-
-            // Custom query to display testimonials
-            $args = array(
-                'post_type'      => 'out-testimonial',
-                'posts_per_page' => 3,
-            );
-            $query = new WP_Query( $args );
-            if ( $query -> have_posts() ){
-            echo '<h2>Testimonials</h2><section class="testimonials">';
-                while ( $query -> have_posts() ) {
-                    $query -> the_post();
-                    the_content();
-                }
-                wp_reset_postdata();
-            echo '</section>';    
+        // Custom query to display testimonials
+        $args = array(
+            'post_type'      => 'out-testimonial',
+            'posts_per_page' => 3,
+        );
+        $query = new WP_Query( $args );
+        if ( $query -> have_posts() ){
+        echo '<h2>Testimonials</h2><section class="testimonials">';
+            while ( $query -> have_posts() ) {
+                $query -> the_post();
+                the_content();
             }
+            wp_reset_postdata();
+        echo '</section>';    
+        }
 
-		endwhile; // End of the loop.
-		?>
+    endwhile; // End of the loop.
+    ?>
 
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
 get_footer();

@@ -58,17 +58,16 @@ get_header();
 			<?php endif; ?>
 
             <?php if ($phone) : ?>
-                <p>Phone: <?php echo esc_html($phone); ?></p>
+                <p><?php echo esc_html($phone); ?></p>
             <?php endif; ?>
 
             <?php if ($fax) : ?>
-                <p>Fax: <?php echo esc_html($fax); ?></p>
+                <p><?php echo esc_html($fax); ?></p>
             <?php endif; ?>
 
             <?php if ($google_map && isset($google_map['lat']) && isset($google_map['lng'])) : ?>
     			<div class="google-map">
-					<!-- need to figure out API keys from google cloud -->
-        			<iframe src="https://www.google.com/maps/embed/v1/view?key=API_KEY&center=<?php echo esc_attr($google_map['lat']); ?>,<?php echo esc_attr($google_map['lng']); ?>&zoom=14" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        			<iframe src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCIhWznK-Bo47A6t_UAoJBLOGH9OUAzut4&center=<?php echo esc_attr($google_map['lat']); ?>,<?php echo esc_attr($google_map['lng']); ?>&zoom=14" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     			</div>
 			<?php endif; ?>
         </section>
