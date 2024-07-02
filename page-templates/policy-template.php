@@ -12,23 +12,55 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+    <?php
+    while ( have_posts() ) :
+        the_post();
 
-			get_template_part( 'template-parts/content', 'page' );
+        get_template_part( 'template-parts/content', 'page' );
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+        $policy_overview = get_field('policy_overview');
+        $policy_info = get_field('policy_info');
 
-		endwhile; // End of the loop.
-		?>
+        if ($policy_overview) :
+            ?>
+            <section class="policy-overview">
+                <h2>Policy Overview</h2>
+                <div class="policy-description">
+                    <?php echo $policy_overview; ?>
+                </div>
+            </section>
+            <?php
+        endif;
 
-	</main><!-- #main -->
+        if ($policy_info && is_array($policy_info)) :
+            ?>
+            <section class="policy-info">
+                <h2>Policy Information</h2>
+                <?php foreach ($policy_info as $info) : ?>
+                    <?php if (isset($info['subtitle']) && isset($info['description'])) : ?>
+                        <div class="policy-item">
+                            <h3><?php echo esc_html($info['subtitle']); ?></h3>
+                            <div class="policy-description">
+                                <?php echo $info['description']; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </section>
+            <?php
+        endif;
+
+        // If comments are open or we have at least one comment, load up the comment template.
+        if ( comments_open() || get_comments_number() ) :
+            comments_template();
+        endif;
+
+    endwhile; // End of the loop.
+    ?>
+
+</main><!-- #main -->
 
 <?php
 get_sidebar();

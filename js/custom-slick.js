@@ -7,6 +7,7 @@ jQuery(document).ready(function ($) {
         adaptiveHeight: true
     });
 
+
     $('.on-sale-slider').slick({
         dots: true,
         infinite: true,
