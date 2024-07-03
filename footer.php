@@ -49,6 +49,14 @@
 				</div>
 			</nav>
 			<nav class="footer-right">
+				<?php
+                	wp_nav_menu(
+                    	array(
+                        	'theme_location' => 'footer-right',
+                        	'menu_id'        => 'footer-right-items',
+                    	)
+                	);
+                	?>
 				<h2>
 				<?php
 					/* translators: 1: Theme name, 2: Theme author. */
