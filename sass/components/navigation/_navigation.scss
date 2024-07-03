@@ -232,6 +232,17 @@
 
 		.footer-right {
 			text-align: center;
+
+			ul {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				margin: 0 auto;
+				padding: 0;
+				gap: 1rem;
+				font-size: 2rem;
+
+			}
 		}
 	}
 }
