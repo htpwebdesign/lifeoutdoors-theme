@@ -206,3 +206,11 @@ function enqueue_theme_styles() {
     wp_enqueue_style( 'theme-style', get_template_directory_uri() . '/style.css' ); 
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_theme_styles' );
+
+
+function enqueue_google_maps_script() {
+    if (is_page('contact-us')) {
+        wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCIhWznK-Bo47A6t_UAoJBLOGH9OUAzut4', null, null, true);
+    }
+}
+add_action('wp_enqueue_scripts', 'enqueue_google_maps_script');

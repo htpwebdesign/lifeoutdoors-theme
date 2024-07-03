@@ -22,7 +22,6 @@ get_header();
     while ( have_posts() ) :
         the_post();
 
-        get_template_part( 'template-parts/content', 'page' );
 
         $home_slider = get_field('hero_images');
 
@@ -104,44 +103,33 @@ get_header();
 
         echo '</div></section>';
 
-        echo '<section class="workshops-this-month"><h2>Workshops This Month</h2><div class="workshop-list">';
+        echo '<section class="workshops-this-month"><h2>Workshops</h2><div class="workshop-list">';
 
-        $current_month = date('m');
-        $current_year = date('Y');
-
-        $first_day_of_month = "$current_year-$current_month-01";
-        $last_day_of_month = date("Y-m-t", strtotime($first_day_of_month));
-
-        $workshop_args = array(
-            'post_type'      => 'event', 
-            'posts_per_page' => -1,
-            'meta_query'     => array(
-                array(
-                    'key'     => 'workshop_date', 
-                    'value'   => array($first_day_of_month, $last_day_of_month),
-                    'compare' => 'BETWEEN',
-                    'type'    => 'DATE'
-                )
-            )
+        $recent_workshops_args = array(
+            'post_type'      => 'tribe_events', 
+            'posts_per_page' => 3,
+            'orderby'        => 'date',
+            'order'          => 'DESC',
         );
 
-        $workshop_query = new WP_Query( $workshop_args );
-        if ( $workshop_query->have_posts() ) {
-            while ( $workshop_query->have_posts() ) {
-                $workshop_query->the_post();
+        $recent_workshops_query = new WP_Query( $recent_workshops_args );
 
-                $workshop_date = get_post_meta(get_the_ID(), 'workshop_date', true);
+        if ( $recent_workshops_query->have_posts() ) {
+            while ( $recent_workshops_query->have_posts() ) {
+                $recent_workshops_query->the_post();
+
                 echo '<div class="single-workshop">';
                 echo '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
-                echo '<span class="workshop-date">' . date('F j, Y', strtotime($workshop_date)) . '</span>';
                 echo '<div class="workshop-excerpt">' . get_the_excerpt() . '</div>';
                 echo '</div>';
             }
             wp_reset_postdata();
         } else {
-            echo '<p>No workshops scheduled for this month.</p>';
+            echo '<p>No workshops found.</p>';
         }
+
         echo '</div></section>';
+
 
         // Custom query to display testimonials
         $args = array(

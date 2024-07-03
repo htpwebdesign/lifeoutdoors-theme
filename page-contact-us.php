@@ -30,6 +30,7 @@ get_header();
         $phone = get_field('phone');
         $fax = get_field('fax');
         $google_map = get_field('google_map');
+
     ?>
 
         <section class="contact-info">
@@ -38,7 +39,7 @@ get_header();
             <?php endif; ?>
 
             <?php if ($physical_address) : ?>
-                <p><?php echo esc_html($physical_address); ?></p>
+                <p><?php echo wp_kses_post($physical_address); ?></p>
             <?php endif; ?>
 
             <?php if ($title_hours) : ?>
@@ -66,10 +67,10 @@ get_header();
             <?php endif; ?>
 
             <?php if ($google_map && isset($google_map['lat']) && isset($google_map['lng'])) : ?>
-    			<div class="google-map">
-        			<iframe src="https://www.google.com/maps/embed/v1/view?key=AIzaSyCIhWznK-Bo47A6t_UAoJBLOGH9OUAzut4&center=<?php echo esc_attr($google_map['lat']); ?>,<?php echo esc_attr($google_map['lng']); ?>&zoom=14" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    			</div>
-			<?php endif; ?>
+                <div id="map" style="height: 450px; width: 600px;"></div>
+            <?php else: ?>
+                <div id="map" style="height: 450px; width: 600px;"></div>
+            <?php endif; ?>
         </section>
 
     <?php
@@ -81,3 +82,33 @@ get_header();
 <?php
 get_sidebar();
 get_footer();
+?>
+
+<script type="text/javascript">
+    function initMap() {
+        var defaultLocation = {lat: 49.2660, lng: -123.1147};
+
+        <?php if ($google_map && isset($google_map['lat']) && isset($google_map['lng'])) : ?>
+            var location = {
+                lat: <?php echo $google_map['lat']; ?>,
+                lng: <?php echo $google_map['lng']; ?>
+            };
+        <?php else: ?>
+            var location = defaultLocation;
+        <?php endif; ?>
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: location
+        });
+
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+    }
+
+    window.onload = function() {
+        initMap();
+    };
+</script>
