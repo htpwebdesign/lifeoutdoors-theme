@@ -86,7 +86,7 @@ get_footer();
 
 <script type="text/javascript">
     function initMap() {
-        var defaultLocation = {lat: 49.2660, lng: -123.1147};
+        var defaultLocation = {lat: 49.2682, lng: -123.1487};
 
         <?php if ($google_map && isset($google_map['lat']) && isset($google_map['lng'])) : ?>
             var location = {
