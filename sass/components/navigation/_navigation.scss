@@ -34,11 +34,6 @@
 				width: 200px;
 			}
 
-			:hover>a,
-			.focus>a {}
-
-			a:hover,
-			a.focus {}
 		}
 
 		li:hover>ul,
@@ -50,8 +45,6 @@
 	li {
 		position: relative;
 
-		&:hover>a,
-		&.focus>a {}
 	}
 
 	a {
@@ -59,10 +52,6 @@
 		text-decoration: none;
 	}
 
-	.current_page_item>a,
-	.current-menu-item>a,
-	.current_page_ancestor>a,
-	.current-menu-ancestor>a {}
 }
 
 /* Small menu. */
@@ -101,5 +90,148 @@
 	.nav-next {
 		text-align: end;
 		flex: 1 0 50%;
+	}
+}
+
+
+// navbar
+.site-header {
+	background-color: #296D38;
+	padding: 1rem;
+
+	.header-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+
+
+		.site-branding {
+			display: flex;
+			align-items: center;
+		}
+
+		.main-navigation {
+			display: flex;
+			align-items: center;
+			width: 100%;
+
+			.menu-left,
+			.menu-center,
+			.menu-right {
+				display: flex;
+				align-items: center;
+			}
+
+			.menu-left {
+				flex: 1;
+				justify-content: flex-start;
+
+				img {
+					height: 50px;
+					width: auto;
+				}
+			}
+
+
+
+			.menu-right {
+				flex: 1;
+				justify-content: flex-end;
+			}
+
+			ul {
+				display: flex;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+
+				li {
+					margin: 0 1rem;
+				}
+
+				a {
+					color: #fff;
+					text-decoration: none;
+					padding: 0.5rem 1rem;
+
+					&:hover {
+						background-color: #fff;
+						color: #296D38;
+						border-radius: 4px;
+					}
+				}
+			}
+
+			.menu-center {
+				flex: 2;
+				justify-content: center;
+
+				#menu-item-402 {
+					justify-content: left;
+					gap: 1rem;
+
+					ul {
+						display: flex;
+						flex-direction: column;
+						background-color: #296D38;
+					}
+				}
+			}
+		}
+	}
+}
+
+// footer
+.site-footer {
+	.footer-menus {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+		background-color: #296D38;
+		color: #fff;
+
+		a,
+		a:visited {
+			color: #fff;
+		}
+
+		a:hover {
+			background-color: #fff;
+			color: #296D38;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		.footer-left,
+		.footer-center,
+		.footer-right {
+			border: 2px solid #296D38;
+			padding: 2rem 0;
+		}
+
+		.footer-left {
+			img {
+				height: 100px;
+				width: auto;
+			}
+		}
+
+		.footer-center {
+			display: flex;
+			flex-direction: row;
+			gap: 4rem;
+
+			ul {
+				margin: 0 auto;
+				padding: 0;
+			}
+		}
+
+		.footer-right {
+			text-align: center;
+		}
 	}
 }

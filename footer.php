@@ -13,27 +13,52 @@
 
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'lifeoutdoors-theme' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'lifeoutdoors-theme' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'lifeoutdoors-theme' ), 'lifeoutdoors-theme', '<a href="https://wp.bcitwebdeveloper.ca/">FWD 37 - Team 5</a>' );
-				?>
+			
+				
 
          <!-- Display footer menus        -->
 
         <div class="footer-menus">
-            <nav id="footer-navigation" class="footer-navigation">
-                <?php wp_nav_menu( array( 'theme_location' => 'footer-left') ); ?>
-            </nav>     
-            <nav id="footer-navigation" class="footer-navigation">
-                <?php wp_nav_menu( array( 'theme_location' => 'footer-right') ); ?>
-            </nav>		
+			<div class="footer-left">
+				<?php
+				the_custom_logo();
+				?>
+			</div>
+			<nav class="footer-center">
+				<div class="footer-center-1">
+					<h2>Contacts</h2>
+					<?php
+                	wp_nav_menu(
+                    	array(
+                        	'theme_location' => 'footer-center',
+                        	'menu_id'        => 'footer-center-items',
+                    	)
+                	);
+                	?>
+				</div>
+				<div class="footer-center-2">
+					<h2>Policies</h2>
+					<?php
+                	wp_nav_menu(
+                    	array(
+                        	'theme_location' => 'footer-center-2',
+                        	'menu_id'        => 'footer-center-2-items',
+                    	)
+                	);
+                	?>
+				</div>
+			</nav>
+			<nav class="footer-right">
+				<h2>
+				<?php
+					/* translators: 1: Theme name, 2: Theme author. */
+					printf( esc_html__( 'Theme: %1$s by %2$s.', 'lifeoutdoors-theme' ), 'lifeoutdoors-theme', '<a href="https://wp.bcitwebdeveloper.ca/">FWD 37 - Team 5</a>' );
+				?>
+				</h2>
+				<p>Dani Melo, Tyler Whitman, Yasin Colak, Danny Kim<br>Educational Purpose Only</p>
+				
+			</nav>
+            		
 		</div><!-- .footer-menus -->
         
 		</div><!-- .site-info -->

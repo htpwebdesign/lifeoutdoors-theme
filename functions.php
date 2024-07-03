@@ -46,15 +46,7 @@ function lifeoutdoors_theme_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in four locations.
-	register_nav_menus(
-		array(
-			'header' => esc_html__( 'Primary', 'lifeoutdoors-theme' ),
-            'header-right' => esc_html__( 'Header - Right Side', 'lifeoutdoors-theme' ),
-            'footer-left' => esc_html__( 'Footer - Left Side', 'lifeoutdoors-theme' ),
-            'footer-right' => esc_html__( 'Footer - Right Side', 'lifeoutdoors-theme' ),
-		)
-	);
+
 
 	/*
 		* Switch default core markup for search form, comment form, and comments
@@ -191,7 +183,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
 
-
+// slideshow for hero images on homepage
 function enqueue_slick_slider() {
     wp_enqueue_style( 'slick-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', array(), '1.8.1' );
     wp_enqueue_style( 'slick-theme-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css', array(), '1.8.1' );
@@ -202,15 +194,39 @@ function enqueue_slick_slider() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_slick_slider' );
 
+// gulp
 function enqueue_theme_styles() {
     wp_enqueue_style( 'theme-style', get_template_directory_uri() . '/style.css' ); 
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_theme_styles' );
 
-
+// google maps API keys on contact page
 function enqueue_google_maps_script() {
     if (is_page('contact-us')) {
         wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCIhWznK-Bo47A6t_UAoJBLOGH9OUAzut4', null, null, true);
     }
 }
 add_action('wp_enqueue_scripts', 'enqueue_google_maps_script');
+
+// register menu locations
+function register_my_menus() {
+    register_nav_menus(
+        array(
+            'menu-left'   => __( 'Menu Left' ),
+            'menu-center' => __( 'Menu Center' ),
+            'menu-right'  => __( 'Menu Right' ),
+			'footer-left'  => __( 'Footer Left' ),
+            'footer-center'  => __( 'Footer Center' ),
+            'footer-center-2'  => __( 'Footer Center-2' ),
+            'footer-right'  => __( 'Footer Right' ),
+        )
+    );
+    
+}
+add_action( 'init', 'register_my_menus' );
+
+// font awesome for nav menus
+function enqueue_font_awesome() {
+    wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css' );
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_font_awesome' );
