@@ -138,12 +138,14 @@ get_header();
         );
         $query = new WP_Query( $args );
         if ( $query -> have_posts() ){
-        echo '<h2>Testimonials</h2><section class="testimonials">';
-            while ( $query -> have_posts() ) {
-                $query -> the_post();
-                the_content();
-            }
-            wp_reset_postdata();
+        echo '<section class="testimonials"><h2>Testimonials</h2>';
+            echo '<div class="testimonials-container">';
+                while ( $query -> have_posts() ) {
+                    $query -> the_post();
+                    the_content();
+                }
+                wp_reset_postdata();
+            echo '</div>';
         echo '</section>';    
         }
 
