@@ -47,9 +47,8 @@ add_action( 'init', 'out_register_custom_post_types' );
 
 
 //This flushes the permalinks when switching themes
-function fwd_rewrite_flush() {
-    fwd_register_custom_post_types();
-    fwd_register_taxonomies();
+function lifeoutdoors_theme_rewrite_flush() {
+    out_register_custom_post_types();
     flush_rewrite_rules();
 }
-add_action( 'after_switch_theme', 'fwd_rewrite_flush' );
+add_action( 'after_switch_theme', 'out_rewrite_flush' );
