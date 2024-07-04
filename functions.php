@@ -140,6 +140,10 @@ function lifeoutdoors_theme_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+
+    // preventing empty search submission
+    wp_enqueue_script('empty-search-prevent', get_template_directory_uri() . '/js/empty-search-prevent.js', array(), '1.0', true);
+    
 }
 add_action( 'wp_enqueue_scripts', 'lifeoutdoors_theme_scripts' );
 
@@ -188,12 +192,6 @@ function enqueue_slick_slider() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_slick_slider' );
 
-// gulp
-function enqueue_theme_styles() {
-    wp_enqueue_style( 'theme-style', get_template_directory_uri() . '/style.css' ); 
-}
-add_action( 'wp_enqueue_scripts', 'enqueue_theme_styles' );
-
 // google maps API keys on contact page
 function enqueue_google_maps_script() {
     if (is_page('contact-us')) {
@@ -214,12 +212,3 @@ add_action( 'tribe_template_after_include:events/v2/components/before', function
         <h1 class="tribe-events-header-title">Workshops</h1>
     </div>     
 <?php } );
-
-// preventing empty search submission
-function lifeoutdoors_enqueue_scripts() {
-    wp_enqueue_style('lifeoutdoors-style', get_stylesheet_uri());
-
-    wp_enqueue_script('empty-search-prevent', get_template_directory_uri() . '/js/empty-search-prevent.js', array(), '1.0', true);
-}
-
-add_action('wp_enqueue_scripts', 'lifeoutdoors_enqueue_scripts');
