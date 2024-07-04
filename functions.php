@@ -46,7 +46,18 @@ function lifeoutdoors_theme_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
-
+    // This theme uses wp_nav_menu() in 7 location.
+    register_nav_menus(
+        array(
+            'menu-left'   => __( 'Menu Left' ),
+            'menu-center' => __( 'Menu Center' ),
+            'menu-right'  => __( 'Menu Right' ),
+			'footer-left'  => __( 'Footer Left' ),
+            'footer-center'  => __( 'Footer Center' ),
+            'footer-center-2'  => __( 'Footer Center-2' ),
+            'footer-right'  => __( 'Footer Right' ),
+        )
+    );
 
 	/*
 		* Switch default core markup for search form, comment form, and comments
@@ -190,23 +201,6 @@ function enqueue_google_maps_script() {
     }
 }
 add_action('wp_enqueue_scripts', 'enqueue_google_maps_script');
-
-// register menu locations
-function register_my_menus() {
-    register_nav_menus(
-        array(
-            'menu-left'   => __( 'Menu Left' ),
-            'menu-center' => __( 'Menu Center' ),
-            'menu-right'  => __( 'Menu Right' ),
-			'footer-left'  => __( 'Footer Left' ),
-            'footer-center'  => __( 'Footer Center' ),
-            'footer-center-2'  => __( 'Footer Center-2' ),
-            'footer-right'  => __( 'Footer Right' ),
-        )
-    );
-    
-}
-add_action( 'init', 'register_my_menus' );
 
 // font awesome for nav menus
 function enqueue_font_awesome() {
