@@ -26,7 +26,7 @@
 			</div>
 			<nav class="footer-center">
 				<div class="footer-center-1">
-					<h2>Contacts</h2>
+					<h3>Contacts</h3>
 					<?php
                 	wp_nav_menu(
                     	array(
@@ -37,7 +37,7 @@
                 	?>
 				</div>
 				<div class="footer-center-2">
-					<h2>Policies</h2>
+					<h3>Policies</h3>
 					<?php
                 	wp_nav_menu(
                     	array(
@@ -57,12 +57,12 @@
                     	)
                 	);
                 	?>
-				<h2>
+				<h3>
 				<?php
 					/* translators: 1: Theme name, 2: Theme author. */
 					printf( esc_html__( 'Theme: %1$s by %2$s.', 'lifeoutdoors-theme' ), 'lifeoutdoors-theme', '<a href="https://wp.bcitwebdeveloper.ca/">FWD 37 - Team 5</a>' );
 				?>
-				</h2>
+				</h3>
 				<p>Dani Melo, Tyler Whitman, Yasin Colak, Danny Kim<br>Educational Purpose Only</p>
 				
 			</nav>
