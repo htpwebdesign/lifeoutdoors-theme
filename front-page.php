@@ -22,7 +22,7 @@ get_header();
     while ( have_posts() ) :
         the_post();
 
-
+        //  Display hero images
         $home_slider = get_field('hero_images');
 
         if ($home_slider && is_array($home_slider)) :
@@ -37,7 +37,9 @@ get_header();
             <?php
         endif;
 
-        echo '<section class="products-by-categories"><h2>Products by Categories</h2><div class="category-products">';
+
+        // Display products by categories
+        echo '<section class="products-by-categories"><h1>Products by Categories</h1><div class="category-products">';
 
         $categories = get_terms('product_cat', array('hide_empty' => true));
         if ( ! empty($categories) && ! is_wp_error($categories) ) {
@@ -72,6 +74,7 @@ get_header();
 
         echo '</div></section>';
 
+        // Display on sale products
         echo '<section class="on-sale-products"><h2>On Sale</h2><div class="on-sale-slider">';
 
         $on_sale_args = array(
@@ -103,6 +106,7 @@ get_header();
 
         echo '</div></section>';
 
+        // Display workshops
         echo '<section class="workshops-this-month"><h2>Workshops</h2><div class="workshop-list">';
 
         $recent_workshops_args = array(
