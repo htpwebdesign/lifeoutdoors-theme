@@ -237,3 +237,12 @@ add_action( 'tribe_template_after_include:events/v2/components/before', function
         <h1 class="tribe-events-header-title">Workshops</h1>
     </div>     
 <?php } );
+
+// preventing empty search submission
+function lifeoutdoors_enqueue_scripts() {
+    wp_enqueue_style('lifeoutdoors-style', get_stylesheet_uri());
+
+    wp_enqueue_script('empty-search-prevent', get_template_directory_uri() . '/js/empty-search-prevent.js', array(), '1.0', true);
+}
+
+add_action('wp_enqueue_scripts', 'lifeoutdoors_enqueue_scripts');

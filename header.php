@@ -19,18 +19,7 @@
 
  
 	<?php wp_head(); ?>
-     <!-- Prevent search form submission if the search input field is empty -->
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchForm = document.querySelector('.search-form');
-            const searchInput = searchForm.querySelector('.search-field');
-            searchForm.addEventListener('submit', function(event) {
-                if (searchInput.value.trim() === '') {
-                    event.preventDefault();
-                }
-            });
-        });
-    </script>
+
 </head>
 
 <body <?php body_class(); ?>>
