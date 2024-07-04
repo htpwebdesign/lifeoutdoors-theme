@@ -230,3 +230,10 @@ function enqueue_font_awesome() {
     wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css' );
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_font_awesome' );
+
+// add h1 to events page
+add_action( 'tribe_template_after_include:events/v2/components/before', function() { ?>
+    <div class="tribe-events-calendar-header">
+        <h1 class="tribe-events-header-title">Workshops</h1>
+    </div>     
+<?php } );
