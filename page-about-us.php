@@ -24,6 +24,7 @@ get_header();
             $company_about = get_field('company_about');
             $company_images = get_field('company_images');
             $size = 'large';
+            $caption = wp_get_attachment_caption( $image );
 
             if ($company_about) :
                 ?>
@@ -42,7 +43,17 @@ get_header();
                     <div class="gallery">
                         <?php foreach ($company_images as $image) : ?>
                             <div class="gallery-item">
-                                <?php echo wp_get_attachment_image( $image, $size ); ?>
+                                <?php 
+                                echo wp_get_attachment_image( $image, $size ); 
+                                $caption = wp_get_attachment_caption( $image );
+                                if ($caption) :
+                                    ?>
+                                    <div class="gallery-caption">
+                                        <?php echo esc_html($caption); ?>
+                                    </div>
+                                    <?php
+                                endif;
+                                ?>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -50,7 +61,6 @@ get_header();
                 <?php
             endif;
         }    
-
 
     endwhile; // End of the loop.
     ?>
