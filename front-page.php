@@ -16,7 +16,6 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-
     
     <?php
     while ( have_posts() ) :
@@ -137,7 +136,6 @@ get_header();
       }
 
       echo '</div></section>';
-
 
         // Custom query to display testimonials
         $args = array(

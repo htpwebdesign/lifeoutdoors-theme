@@ -14,8 +14,6 @@
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
 			
-				
-
          <!-- Display footer menus        -->
 
         <div class="footer-menus">
@@ -57,9 +55,7 @@
                     	)
                 	);
                 	?>
-			
 				<p>Created by Dani Melo, Tyler Whitman, Yasin Colak, Danny Kim<br>Educational Purpose Only</p>
-				
 			</nav>
             		
 		</div><!-- .footer-menus -->

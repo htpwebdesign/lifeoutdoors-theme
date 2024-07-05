@@ -77,7 +77,6 @@ get_header();
                     <?php endif; ?>
                 </section>                    
 
-
             </section>
                 
             <section class="maps">
