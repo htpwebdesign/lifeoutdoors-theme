@@ -36,14 +36,27 @@ get_header();
         ?>
 
             <section class="contact-info">
-                <?php if ($title_address) : ?>
-                    <h2><?php echo esc_html($title_address); ?></h2>
-                <?php endif; ?>
 
-                <?php if ($physical_address) : ?>
-                    <p><?php echo wp_kses_post($physical_address); ?></p>
-                <?php endif; ?>
+                <div class="visit-address">
+                    <?php if ($title_address) : ?>
+                        <h2><?php echo esc_html($title_address); ?></h2>
+                    <?php endif; ?>
 
+                    <?php if ($physical_address) : ?>
+                        <p><?php echo wp_kses_post($physical_address); ?></p>
+                    <?php endif; ?>
+                </div>        
+
+                <div class="visit-phone">    
+                    <?php if ($phone) : ?>
+                        <p><?php echo esc_html($phone); ?></p>
+                    <?php endif; ?>
+
+                    <?php if ($fax) : ?>
+                        <p><?php echo esc_html($fax); ?></p>
+                    <?php endif; ?>  
+                </div>    
+            
                 <?php if ($title_hours) : ?>
                     <h2><?php echo esc_html($title_hours); ?></h2>
                 <?php endif; ?>
@@ -58,14 +71,6 @@ get_header();
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
-                <?php endif; ?>
-
-                <?php if ($phone) : ?>
-                    <p><?php echo esc_html($phone); ?></p>
-                <?php endif; ?>
-
-                <?php if ($fax) : ?>
-                    <p><?php echo esc_html($fax); ?></p>
                 <?php endif; ?>
 
             </section>
@@ -98,7 +103,7 @@ get_header();
                     <form action="https://bcitwebdeveloper.us17.list-manage.com/subscribe/post?u=ca84e9592fe90b690293a8f7f&amp;id=a092230ff0&amp;f_id=00edc2e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
                         <div id="mc_embed_signup_scroll">
                             <h2>Stay Updated with Life Outdoors</h2>
-                            <p>Sign up for exclusive offers, event invites, and special disconts!</p>
+                            <p>Sign up for exclusive offers, event invites, and special discounts!</p>
                             <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
                             <div class="mc-field-group">
                                 <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
