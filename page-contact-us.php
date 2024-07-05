@@ -44,7 +44,7 @@ get_header();
                         <?php endif; ?>
 
                         <?php if ($physical_address) : ?>
-                            <p><?php echo wp_kses_post($physical_address); ?></p>
+                            <?php echo wp_kses_post($physical_address); ?>
                         <?php endif; ?>
                     </div>        
 
