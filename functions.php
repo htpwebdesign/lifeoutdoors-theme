@@ -144,6 +144,23 @@ function lifeoutdoors_theme_scripts() {
     // preventing empty search submission
     wp_enqueue_script('empty-search-prevent', get_template_directory_uri() . '/js/empty-search-prevent.js', array(), '1.0', true);
     
+    // font awesome for nav menus
+    wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css' );
+
+    // slideshow for hero images on homepage
+    wp_enqueue_style( 'slick-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', array(), '1.8.1' );
+   
+    wp_enqueue_style( 'slick-theme-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css', array(), '1.8.1' );
+
+    wp_enqueue_script( 'slick-js', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), '1.8.1', true );
+
+    wp_enqueue_script( 'custom-slick-js', get_template_directory_uri() . '/js/custom-slick.js', array('jquery', 'slick-js'), '1.0.0', true );
+
+    // google maps API keys on contact page
+    if (is_page('contact-us')) {
+        wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCIhWznK-Bo47A6t_UAoJBLOGH9OUAzut4', null, null, true);
+    }
+
 }
 add_action( 'wp_enqueue_scripts', 'lifeoutdoors_theme_scripts' );
 
@@ -180,31 +197,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
-
-// slideshow for hero images on homepage
-function enqueue_slick_slider() {
-    wp_enqueue_style( 'slick-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css', array(), '1.8.1' );
-    wp_enqueue_style( 'slick-theme-css', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css', array(), '1.8.1' );
-
-    wp_enqueue_script( 'slick-js', 'https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), '1.8.1', true );
-
-    wp_enqueue_script( 'custom-slick-js', get_template_directory_uri() . '/js/custom-slick.js', array('jquery', 'slick-js'), '1.0.0', true );
-}
-add_action( 'wp_enqueue_scripts', 'enqueue_slick_slider' );
-
-// google maps API keys on contact page
-function enqueue_google_maps_script() {
-    if (is_page('contact-us')) {
-        wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCIhWznK-Bo47A6t_UAoJBLOGH9OUAzut4', null, null, true);
-    }
-}
-add_action('wp_enqueue_scripts', 'enqueue_google_maps_script');
-
-// font awesome for nav menus
-function enqueue_font_awesome() {
-    wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css' );
-}
-add_action( 'wp_enqueue_scripts', 'enqueue_font_awesome' );
 
 // add h1 to events page
 add_action( 'tribe_template_after_include:events/v2/components/before', function() { ?>
