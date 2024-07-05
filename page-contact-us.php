@@ -37,41 +37,46 @@ get_header();
 
             <section class="contact-info">
 
-                <div class="visit-address">
-                    <?php if ($title_address) : ?>
-                        <h2><?php echo esc_html($title_address); ?></h2>
-                    <?php endif; ?>
+                <section class="visit">
+                    <div class="visit-address">
+                        <?php if ($title_address) : ?>
+                            <h2><?php echo esc_html($title_address); ?></h2>
+                        <?php endif; ?>
 
-                    <?php if ($physical_address) : ?>
-                        <p><?php echo wp_kses_post($physical_address); ?></p>
-                    <?php endif; ?>
-                </div>        
+                        <?php if ($physical_address) : ?>
+                            <p><?php echo wp_kses_post($physical_address); ?></p>
+                        <?php endif; ?>
+                    </div>        
 
-                <div class="visit-phone">    
-                    <?php if ($phone) : ?>
-                        <p><?php echo esc_html($phone); ?></p>
-                    <?php endif; ?>
+                    <div class="visit-phone">    
+                        <?php if ($phone) : ?>
+                            <p><?php echo esc_html($phone); ?></p>
+                        <?php endif; ?>
 
-                    <?php if ($fax) : ?>
-                        <p><?php echo esc_html($fax); ?></p>
-                    <?php endif; ?>  
-                </div>    
+                        <?php if ($fax) : ?>
+                            <p><?php echo esc_html($fax); ?></p>
+                        <?php endif; ?>  
+                    </div> 
+                </section>            
             
-                <?php if ($title_hours) : ?>
-                    <h2><?php echo esc_html($title_hours); ?></h2>
-                <?php endif; ?>
+                <section class="hours">        
+                    <?php if ($title_hours) : ?>
+                        <h2><?php echo esc_html($title_hours); ?></h2>
+                    <?php endif; ?>
 
-                <?php if ($store_hours && is_array($store_hours)) : ?>
-                    <div class="store-hours">
-                        <?php foreach ($store_hours as $hour) : ?>
-                            <?php if (isset($hour['week_days']) && isset($hour['hours']) && is_array($hour['hours'])) : ?>
-                                <p><?php echo esc_html($hour['week_days']); ?>: 
-                                    <?php echo implode(', ', array_map('esc_html', $hour['hours'])); ?>
-                                </p>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    </div>
-                <?php endif; ?>
+                    <?php if ($store_hours && is_array($store_hours)) : ?>
+                        <div class="store-hours">
+                            <?php foreach ($store_hours as $hour) : ?>
+                                <?php if (isset($hour['week_days']) && isset($hour['hours']) && is_array($hour['hours'])) : ?>
+                                    <p><?php echo esc_html($hour['week_days']); ?>: 
+                                        <?php echo implode(', ', array_map('esc_html', $hour['hours'])); ?>
+                                    </p>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                </section>                    
+
 
             </section>
                 
