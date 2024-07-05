@@ -57,13 +57,8 @@
                     	)
                 	);
                 	?>
-				<h4>
-				<?php
-					/* translators: 1: Theme name, 2: Theme author. */
-					printf( esc_html__( 'Theme: %1$s by %2$s.', 'lifeoutdoors-theme' ), 'lifeoutdoors-theme', '<a href="https://wp.bcitwebdeveloper.ca/">FWD 37 - Team 5</a>' );
-				?>
-				</h4>
-				<p>Dani Melo, Tyler Whitman, Yasin Colak, Danny Kim<br>Educational Purpose Only</p>
+			
+				<p>Created by Dani Melo, Tyler Whitman, Yasin Colak, Danny Kim<br>Educational Purpose Only</p>
 				
 			</nav>
             		
