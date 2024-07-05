@@ -27,13 +27,14 @@ get_header();
         //  Display hero images
         if ( function_exists( 'get_field' ) ) {
             $home_slider = get_field('hero_images');
+            $size = '1536x1536';
 
             if ($home_slider && is_array($home_slider)) :
                 ?>
                 <section class="image-slider">
                     <?php foreach ($home_slider as $image) : ?>
                         <div class="slide">
-                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+                        <?php echo wp_get_attachment_image( $image, $size ); ?>
                         </div>
                     <?php endforeach; ?>
                 </section>
