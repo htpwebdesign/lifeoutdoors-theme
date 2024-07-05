@@ -20,8 +20,9 @@ get_header();
 
         get_template_part( 'template-parts/content', 'page' );
 
-
+        // Check if the Advanced Custom Fields function exists.
         if ( function_exists( 'get_field' ) ) { 
+            // Get fields values and display content if it exists. 
             $policy_overview = get_field('policy_overview');
             $policy_info = get_field('policy_info');
 
