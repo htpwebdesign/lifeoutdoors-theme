@@ -23,6 +23,7 @@ get_header();
         if ( function_exists( 'get_field' ) ) {
             $company_about = get_field('company_about');
             $company_images = get_field('company_images');
+            $size = 'large';
 
             if ($company_about) :
                 ?>
@@ -40,17 +41,16 @@ get_header();
                     <h2>Our Store: Where the Adventure Begins and Outdoor Adventures from Our Founders</h2>
                     <div class="gallery">
                         <?php foreach ($company_images as $image) : ?>
-                            <?php if (is_array($image)) :  ?>
-                                <div class="gallery-item">
-                                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
-                                </div>
-                            <?php endif; ?>
+                            <div class="gallery-item">
+                                <?php echo wp_get_attachment_image( $image, $size ); ?>
+                            </div>
                         <?php endforeach; ?>
                     </div>
                 </section>
                 <?php
             endif;
         }    
+
 
     endwhile; // End of the loop.
     ?>
