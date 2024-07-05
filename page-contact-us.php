@@ -23,67 +23,82 @@ get_header();
 
         get_template_part( 'template-parts/content', 'page' );
 
-        $title_address = get_field('title_adress');
-        $title_hours = get_field('title_hours');
-        $physical_address = get_field('physical_address');
-        $store_hours = get_field('our_store_ours');
-        $phone = get_field('phone');
-        $fax = get_field('fax');
-        $google_map = get_field('google_map');
+        if ( function_exists( 'get_field' ) ) {
 
+            $title_address = get_field('title_adress');
+            $title_hours = get_field('title_hours');
+            $physical_address = get_field('physical_address');
+            $store_hours = get_field('our_store_hours');
+            $phone = get_field('phone');
+            $fax = get_field('fax');
+            $google_map = get_field('google_map');
+
+        ?>
+
+            <section class="contact-info">
+                <?php if ($title_address) : ?>
+                    <h2><?php echo esc_html($title_address); ?></h2>
+                <?php endif; ?>
+
+                <?php if ($physical_address) : ?>
+                    <p><?php echo wp_kses_post($physical_address); ?></p>
+                <?php endif; ?>
+
+                <?php if ($title_hours) : ?>
+                    <h2><?php echo esc_html($title_hours); ?></h2>
+                <?php endif; ?>
+
+                <?php if ($store_hours && is_array($store_hours)) : ?>
+                    <div class="store-hours">
+                        <?php foreach ($store_hours as $hour) : ?>
+                            <?php if (isset($hour['week_days']) && isset($hour['hours']) && is_array($hour['hours'])) : ?>
+                                <p><?php echo esc_html($hour['week_days']); ?>: 
+                                    <?php echo implode(', ', array_map('esc_html', $hour['hours'])); ?>
+                                </p>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($phone) : ?>
+                    <p><?php echo esc_html($phone); ?></p>
+                <?php endif; ?>
+
+                <?php if ($fax) : ?>
+                    <p><?php echo esc_html($fax); ?></p>
+                <?php endif; ?>
+
+            </section>
+                
+            <section class="maps">
+
+                <?php if ($google_map && isset($google_map['lat']) && isset($google_map['lng'])) : ?>
+                    <div id="map" style="height: 450px; width: 600px;"></div>
+                <?php else: ?>
+                    <div id="map" style="height: 450px; width: 600px;"></div>
+                <?php endif; ?>
+
+            </section>              
+        <?php
+        }
+
+    endwhile; // End of the loop.
     ?>
-
-        <section class="contact-info">
-            <?php if ($title_address) : ?>
-                <h2><?php echo esc_html($title_address); ?></h2>
-            <?php endif; ?>
-
-            <?php if ($physical_address) : ?>
-                <p><?php echo wp_kses_post($physical_address); ?></p>
-            <?php endif; ?>
-
-            <?php if ($title_hours) : ?>
-                <h2><?php echo esc_html($title_hours); ?></h2>
-            <?php endif; ?>
-
-            <?php if ($store_hours && is_array($store_hours)) : ?>
-    			<div class="store-hours">
-        			<?php foreach ($store_hours as $hour) : ?>
-            			<?php if (isset($hour['week_days']) && isset($hour['hours']) && is_array($hour['hours'])) : ?>
-                			<p><?php echo esc_html($hour['week_days']); ?>: 
-                    			<?php echo implode(', ', array_map('esc_html', $hour['hours'])); ?>
-                			</p>
-            			<?php endif; ?>
-        			<?php endforeach; ?>
-    			</div>
-			<?php endif; ?>
-
-            <?php if ($phone) : ?>
-                <p><?php echo esc_html($phone); ?></p>
-            <?php endif; ?>
-
-            <?php if ($fax) : ?>
-                <p><?php echo esc_html($fax); ?></p>
-            <?php endif; ?>
-
-            <?php if ($google_map && isset($google_map['lat']) && isset($google_map['lng'])) : ?>
-                <div id="map" style="height: 450px; width: 600px;"></div>
-            <?php else: ?>
-                <div id="map" style="height: 450px; width: 600px;"></div>
-            <?php endif; ?>
-
+    
+        <section class="newsletter">
             <!-- Mailchimp Form -->
             <div id="mc_embed_shell">
                 <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
                 <style type="text/css">
                     #mc_embed_signup{background:#fff; false;clear:left; font:14px Helvetica,Arial,sans-serif; width: 600px;}
                     /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-                       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+                    We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
                 </style>
                 <div id="mc_embed_signup">
                     <form action="https://bcitwebdeveloper.us17.list-manage.com/subscribe/post?u=ca84e9592fe90b690293a8f7f&amp;id=a092230ff0&amp;f_id=00edc2e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
                         <div id="mc_embed_signup_scroll">
-                            <h2>Subscribe To The Life Outdoors Newsletter</h2>
+                            <h2>Stay Updated with Life Outdoors</h2>
+                            <p>Sign up for exclusive offers, event invites, and special disconts!</p>
                             <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
                             <div class="mc-field-group">
                                 <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
@@ -128,12 +143,7 @@ get_header();
                 </script>
             </div>
             <!-- End of Mailchimp Form Embed Code -->
-
-        </section>
-
-    <?php
-    endwhile; // End of the loop.
-    ?>
+        </section>            
 
 </main><!-- #main -->
 
