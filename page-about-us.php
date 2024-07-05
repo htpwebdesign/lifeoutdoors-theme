@@ -20,36 +20,38 @@ get_header();
 
         get_template_part( 'template-parts/content', 'page' );
 
-        $company_about = get_field('company_about');
-        $company_images = get_field('company_images');
+        if ( function_exists( 'get_field' ) ) {
+            $company_about = get_field('company_about');
+            $company_images = get_field('company_images');
 
-        if ($company_about) :
-            ?>
-            <section class="company-about">
-                <h2>About the Company</h2>
-                <div class="company-description">
-                    <?php echo $company_about;?>
-                </div>
-            </section>
-            <?php
-        endif;
+            if ($company_about) :
+                ?>
+                <section class="company-about">
+                    <h2>About the Company</h2>
+                    <div class="company-description">
+                        <?php echo $company_about;?>
+                    </div>
+                </section>
+                <?php
+            endif;
 
-        if ($company_images && is_array($company_images)) :
-			?>
-			<section class="company-images">
-				<h2>Company Images</h2>
-				<div class="gallery">
-					<?php foreach ($company_images as $image) : ?>
-						<?php if (is_array($image)) :  ?>
-							<div class="gallery-item">
-								<img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
-							</div>
-						<?php endif; ?>
-					<?php endforeach; ?>
-				</div>
-			</section>
-			<?php
-		endif;
+            if ($company_images && is_array($company_images)) :
+                ?>
+                <section class="company-images">
+                    <h2>Company Images</h2>
+                    <div class="gallery">
+                        <?php foreach ($company_images as $image) : ?>
+                            <?php if (is_array($image)) :  ?>
+                                <div class="gallery-item">
+                                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                </section>
+                <?php
+            endif;
+        }    
 
     endwhile; // End of the loop.
     ?>
