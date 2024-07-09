@@ -204,3 +204,11 @@ add_action( 'tribe_template_after_include:events/v2/components/before', function
         <h1 class="tribe-events-header-title">Workshops</h1>
     </div>     
 <?php } );
+
+/**
+ * Lower Yoast SEO Metabox location
+ */
+function yoast_to_bottom(){
+	return 'low';
+}
+add_filter( 'wpseo_metabox_prio', 'yoast_to_bottom' );
