@@ -133,6 +133,12 @@ add_action( 'widgets_init', 'lifeoutdoors_theme_widgets_init' );
  */
 function lifeoutdoors_theme_scripts() {
 	wp_enqueue_style( 'lifeoutdoors-theme-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style(
+        'fwd-googlefonts', //unique handle
+        'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap', // url
+        array(), // dependencies
+        null // version, must be set to null for Google Fonts to load multiple font families
+    );
 	wp_style_add_data( 'lifeoutdoors-theme-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'lifeoutdoors-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
