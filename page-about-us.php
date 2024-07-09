@@ -24,7 +24,7 @@ get_header();
             $company_about = get_field('company_about');
             $company_images = get_field('company_images');
             $size = 'large';
-            $caption = wp_get_attachment_caption( $image );
+            $caption = wp_get_attachment_caption( $company_images );
 
             if ($company_about) :
                 ?>
