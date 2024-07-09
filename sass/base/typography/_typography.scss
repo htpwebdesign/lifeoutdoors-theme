@@ -12,3 +12,9 @@ textarea {
 
 @import "headings";
 @import "copy";
+
+
+header,
+footer {
+	font-family: $font-family-heading;
+}
