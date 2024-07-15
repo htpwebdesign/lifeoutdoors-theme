@@ -6,6 +6,9 @@ body {
     max-width: 2200px;
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
+    flex-flow: column wrap;
+
 }
 
 .site-main {
