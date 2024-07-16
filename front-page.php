@@ -17,7 +17,7 @@ get_header();
 
 <main id="primary" class="site-main">
 
-    <div class="home"> <!-- Added this div to wrap the content -->
+    <div class="front-page"> <!-- Added this div to wrap the content -->
     
     <?php
     while ( have_posts() ) :
