@@ -167,34 +167,40 @@
 	}
 }
 
-
-
 // about page
-.company-about {
-	margin: 20px 0;
-
-	.company-description {
-		font-size: 1.2em;
-		line-height: 1.6;
-	}
-}
 
 .company-images {
-	margin: 20px 0;
+    .gallery-caption {
+        font-size: small;
+    }
 
 	.gallery {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 10px;
+		gap: .625rem;
 
 		.gallery-item {
-			flex: 1 1 calc(33.333% - 10px);
+			flex: 1 1 calc(100% - 10px); // Mobile
 
 			img {
 				width: 100%;
 				height: auto;
 				display: block;
 			}
+		}
+	}
+
+	// Tablet
+	@media (min-width: 768px) {
+		.gallery .gallery-item {
+			flex: 1 1 calc(50% - 10px);
+		}
+	}
+
+	// Desktop
+	@media (min-width: 1024px) {
+		.gallery .gallery-item {
+			flex: 1 1 calc(25% - 10px);
 		}
 	}
 }
