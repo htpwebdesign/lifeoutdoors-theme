@@ -5,28 +5,45 @@ h4,
 h5,
 h6 {
     line-height: $font__line-height-heading;
-    font-weight: 700; 
+    font-weight: 700;
 }
-
-footer h3 {
-    font-family: $font-family-footer-header
-}
-
 
 h1 {
     font-size: 2rem;
 }
 
 h2 {
-    font-size: 1.875rem;
-}    
-
-h3 {
-    font-size: 1.75rem;
+    font-size: 1.375rem;
 }
 
+h3 {
+    font-size: 1.25rem;
+}
 
-.front-page h2, 
-.front-page h3 {
-    text-align: center;
+footer {
+    h3 {
+        font-family: $font-family-footer-header;
+    }
+}
+
+.front-page {
+    h2,
+    h3 {
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+        text-align: left;
+    }
+}
+
+.single-workshop {
+    h3 {
+        font-size: 1.25rem;
+    }
 }
