@@ -4,10 +4,23 @@ h3,
 h4,
 h5,
 h6 {
-    line-height: $heading-line-height;   
+    line-height: $font__line-height-heading;
+    font-weight: 700; 
 }
-
 
 footer h3 {
     font-family: $font-family-footer-header
+}
+
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.875rem;
+}    
+
+h3 {
+    font-size: 1.75rem;
 }
