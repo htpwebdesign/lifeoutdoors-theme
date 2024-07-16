@@ -11,3 +11,12 @@
 .custom-logo-link {
 	display: inline-block;
 }
+
+
+#post-145, #post-201 {
+    img {
+        height: 400px;
+        max-width: 100%;
+        object-fit: cover;
+    }
+}

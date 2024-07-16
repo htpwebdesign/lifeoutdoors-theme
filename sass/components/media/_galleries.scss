@@ -18,6 +18,36 @@
 	}
 }
 
-.gallery-caption {
-	display: block;
+
+.company-images {
+
+	.gallery {
+		display: flex;
+		flex-wrap: wrap;
+		gap: .625rem;
+
+		.gallery-item {
+			flex: 1 1 calc(100% - 10px); // Mobile
+
+			img {
+				width: 100%;
+				height: auto;
+				display: block;
+			}
+		}
+	}
+
+	// Tablet
+	@media (min-width: 768px) {
+		.gallery .gallery-item {
+			flex: 1 1 calc(50% - 10px);
+		}
+	}
+
+	// Desktop
+	@media (min-width: 1024px) {
+		.gallery .gallery-item {
+			flex: 1 1 calc(25% - 10px);
+		}
+	}
 }
