@@ -18,3 +18,14 @@ header,
 footer {
 	font-family: $font-family-footer-header;
 }
+
+
+p {
+    font-size: 1rem;
+}
+
+.store-hours{
+    p {
+        margin: 0 0 .5rem;
+    }
+}
