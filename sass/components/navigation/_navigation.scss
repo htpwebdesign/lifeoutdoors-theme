@@ -191,35 +191,96 @@
 
 
 // footer
+// .site-footer {
+// 	.footer-menus {
+// 		display: flex;
+// 		flex-direction: row;
+// 		justify-content: space-around;
+// 		align-items: center;
+// 		background-color: #296D38;
+// 		color: #fff;
+
+// 		a,
+// 		a:visited {
+// 			color: #fff;
+// 		}
+
+// 		a:hover {
+// 			background-color: #fff;
+// 			color: #296D38;
+// 		}
+
+// 		li {
+// 			list-style: none;
+// 		}
+
+// 		.footer-left,
+// 		.footer-center,
+// 		.footer-right {
+// 			border: 2px solid #296D38;
+// 			padding: 2rem 0;
+// 		}
+
+// 		.footer-left {
+// 			img {
+// 				height: 100px;
+// 				width: auto;
+// 			}
+// 		}
+
+// 		.footer-center {
+// 			display: flex;
+// 			flex-direction: row;
+// 			gap: 4rem;
+
+// 			ul {
+// 				margin: 0 auto;
+// 				padding: 0;
+// 			}
+// 		}
+
+// 		.footer-right {
+// 			text-align: center;
+
+// 			ul {
+// 				display: flex;
+// 				flex-direction: row;
+// 				justify-content: center;
+// 				margin: 0 auto;
+// 				padding: 0;
+// 				gap: 1rem;
+// 				font-size: 2rem;
+
+// 			}
+// 		}
+// 	}
+// }
+
 .site-footer {
 	.footer-menus {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		justify-content: space-around;
 		align-items: center;
 		background-color: #296D38;
 		color: #fff;
+	}
 
-		a,
-		a:visited {
-			color: #fff;
-		}
+	a,
+	a:visited {
+		color: #fff;
+	}
 
-		a:hover {
-			background-color: #fff;
-			color: #296D38;
-		}
+	li {
+		list-style: none;
+	}
 
-		li {
-			list-style: none;
-		}
-
-		.footer-left,
-		.footer-center,
-		.footer-right {
-			border: 2px solid #296D38;
-			padding: 2rem 0;
-		}
+	.footer-left,
+	.footer-center,
+	.footer-right {
+		border: 2px solid #296D38;
+		padding: 2rem 0;
+	}
 
 		.footer-left {
 			img {
@@ -228,14 +289,19 @@
 			}
 		}
 
-		.footer-center {
+		.footer-center,
+		.footer-center-2 {
 			display: flex;
-			flex-direction: row;
-			gap: 4rem;
+			flex-direction: column;
+			align-items: center;
+			// gap: 4rem;
 
 			ul {
 				margin: 0 auto;
 				padding: 0;
+			}
+			li, h3 {
+				text-align: center;
 			}
 		}
 
@@ -253,5 +319,19 @@
 
 			}
 		}
-	}
+		@media (min-width: 48rem) {
+			.footer-menus {
+				flex-direction: row;
+				justify-content: space-around;
+			}
+			.footer-center {
+				display: flex;
+				flex-direction: row;
+				gap: 4rem;
+			}
+			a:hover {
+				background-color: #fff;
+				color: #296D38;
+		}
+		}
 }
