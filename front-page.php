@@ -16,12 +16,14 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
+
+    <div class="home"> <!-- Added this div to wrap the content -->
     
     <?php
     while ( have_posts() ) :
         the_post();
 
-        echo '<h1 class="screen-reader-text">' . get_the_title() . '</h1>';
+        echo '<h1 class="screen-reader-text">Life Outdoors</h1>';
 
         //  Display hero images
         if ( function_exists( 'get_field' ) ) {
@@ -158,6 +160,7 @@ get_header();
     endwhile; // End of the loop.
     ?>
 
+    </div> <!-- Closing div for class home -->
 </main><!-- #main -->
 
 <?php
