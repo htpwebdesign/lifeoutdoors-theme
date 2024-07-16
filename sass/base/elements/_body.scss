@@ -2,7 +2,7 @@ body {
 	background: $color__background-body; // Fallback for when there is no custom background color defined.
 
         .site {
-        max-width: 1200px;
+        max-width: 120rem;
         display: flex;
         flex-direction: column;
     }
