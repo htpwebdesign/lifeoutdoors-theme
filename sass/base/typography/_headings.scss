@@ -34,11 +34,19 @@ footer {
 
     h2 {
         font-size: 1.5rem;
+        padding-bottom: .9375rem;
     }
 
     h3 {
         font-size: 1rem;
         // text-align: left;
+    }
+
+    
+    @media (min-width: 48rem) {
+        h2 {
+            font-size: 2rem;
+        }
     }
 }
 
@@ -53,3 +61,4 @@ footer {
     font-weight: 700;
     margin-bottom: 3.125rem;
 }
+
