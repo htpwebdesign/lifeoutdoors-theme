@@ -12,11 +12,16 @@ body {
         padding: 1.25rem;
     }
 
+
+    @media (min-width: 48rem) { 
+        .site-main {
+            flex-grow: 1;
+        }
+    }
+
     @media (min-width: 62rem) { 
         .site-main {
             padding: 4rem;
-            flex-grow: 1;
-        }
     }
 
 } 
