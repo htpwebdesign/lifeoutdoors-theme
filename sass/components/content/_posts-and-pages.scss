@@ -63,6 +63,7 @@
 // on sale products
 .on-sale-products {
 	margin-top: 3.125rem;
+    text-align: center;
 
 	.on-sale-slider {
 		.single-sale-product {
@@ -102,7 +103,7 @@
 		text-align: center;
 		text-decoration: none;
 		margin-top: .625rem;
-		width: 100%;
+		width: fit-content;
 
 		&:hover {
 			background-color: #444;
