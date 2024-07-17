@@ -186,17 +186,26 @@
 }
 
 .visit, .hours {
-    padding: .625rem;
     box-sizing: border-box; 
 }
+
+
+
 
 /* Media query for tablets  */
 @media (min-width: 768px) {
     .contact-info {
         grid-template-columns: 1fr 1fr; 
     }
-}
 
+    #post-201 {
+        .entry-content, h1 {
+        margin-left: 6rem;
+        margin-right: 6rem;
+        }
+    }
+    
+}
 
 
 
