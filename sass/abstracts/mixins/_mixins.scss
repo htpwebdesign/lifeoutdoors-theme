@@ -5,10 +5,12 @@
 	margin-right: auto;
 }
 
-// Column width with margin
-// @mixin column-width($numberColumns: 3) {
-// 	width: map-get($columns, $numberColumns) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
-// }
+//Column width with margin
+@mixin column-width($numberColumns: 3) {
+	width: map-get($columns, $numberColumns) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
+    // width: calc(($columns__margin * ($numberColumns )) / $numberColumns);
+    // width: calc(map-get($columns, $numberColumns) - (($columns__margin * ($numberColumns - 1)) / $numberColumns));
+}
 
 // Media query
 @mixin mq($w){
