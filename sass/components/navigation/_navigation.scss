@@ -372,3 +372,17 @@
 		}
 		}
 }
+
+.site-header .header-container .main-navigation .sub-menu{
+	flex-direction: column;
+	background-color: $color__background_header_footer;
+	
+	@media (min-width:56rem) {
+		// flex-direction: row;
+		// left: -300px;
+	}
+	a{
+		max-width: max-content;
+	}
+	
+}
