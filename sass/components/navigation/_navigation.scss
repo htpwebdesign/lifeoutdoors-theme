@@ -106,7 +106,7 @@
 }
 // navbar
 .site-header {
-	background-color: #296D38;
+	background-color: $color__background_header_footer;
 	padding: 1rem;
 
 	.header-container {
@@ -175,8 +175,8 @@
 
 				button,
 				input {
-					background-color: #fff;
-					color: #296D38;
+					background-color: $color__text_light;
+					color: $color__background_header_footer;
 				}
 			}
 
@@ -193,13 +193,13 @@
 				}
 
 				a {
-					color: #fff;
+					color: $color__text_light;
 					text-decoration: none;
 					padding: 0.5rem 1rem;
 
 					&:hover {
-						background-color: #fff;
-						color: #296D38;
+						background-color: $color__text_light;
+						color: $color__background_header_footer;
 						border-radius: 4px;
 					}
 				}
@@ -299,13 +299,13 @@
 		flex-direction: column;
 		justify-content: space-around;
 		align-items: center;
-		background-color: #296D38;
-		color: #fff;
+		background-color: $color__background_header_footer;
+		color: $color__text_light;
 	}
 
 	a,
 	a:visited {
-		color: #fff;
+		color: $color__text_light;
 	}
 
 	li {
@@ -315,7 +315,7 @@
 	.footer-left,
 	.footer-center,
 	.footer-right {
-		border: 2px solid #296D38;
+		border: 2px solid $color__background_header_footer;
 		padding: 2rem 0;
 	}
 
@@ -367,8 +367,8 @@
 				gap: 4rem;
 			}
 			a:hover {
-				background-color: #fff;
-				color: #296D38;
+				background-color: $color__text_light;
+				color: $color__background_header_footer;
 		}
 		}
 }
