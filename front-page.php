@@ -111,34 +111,42 @@ get_header();
 
         echo '</div></section>';
 
-      // Display workshops
-      echo '<section class="workshops-this-month"><h2>Workshops</h2><div class="workshop-list">';
+        // Display workshops
+        echo '<section class="workshops-this-month"><h2>Workshops</h2><div class="workshop-list">';
 
-      $recent_workshops_args = array(
-          'post_type'      => 'tribe_events', 
-          'posts_per_page' => 3,
-          'orderby'        => 'date',
-          'order'          => 'DESC',
-      );
+        $recent_workshops_args = array(
+            'post_type'      => 'tribe_events', 
+            'posts_per_page' => 3,
+            'orderby'        => 'date',
+            'order'          => 'ASC',
+        );
 
-      $recent_workshops_query = new WP_Query( $recent_workshops_args );
+        $recent_workshops_query = new WP_Query( $recent_workshops_args );
 
-      if ( $recent_workshops_query->have_posts() ) {
-          while ( $recent_workshops_query->have_posts() ) {
-              $recent_workshops_query->the_post();
+        if ( $recent_workshops_query->have_posts() ) {
+            while ( $recent_workshops_query->have_posts() ) {
+                $recent_workshops_query->the_post();
 
-              echo '<article class="single-workshop">';
-              echo '<h3><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
-              echo '<div class="workshop-excerpt">' . get_the_excerpt() . '</div>';
-              echo '</article>';
-          }
-          wp_reset_postdata();
-      } else {
-          echo '<p>No workshops found.</p>';
-      }
+                echo '<article class="single-workshop">';
+                echo '<a href="' . get_permalink() . '">';
+                echo '<h3>' . get_the_title() . '</h3>';
+                echo '<div class="workshop-content">';
+                if (has_post_thumbnail()) {
+                    echo '<div class="workshop-thumbnail">' . get_the_post_thumbnail(get_the_ID(), 'thumbnail') . '</div>';
+                }
+                echo '<div class="workshop-excerpt">' . get_the_excerpt() . '</div>';
+                echo '</div>'; 
+                echo '</a>';
+                echo '</article>';
+            }
+            wp_reset_postdata();
+        } else {
+            echo '<p>No workshops found.</p>';
+        }
 
-      echo '</div></section>';
+        echo '</div></section>';
 
+        
         // Custom query to display testimonials
         $args = array(
             'post_type'      => 'out-testimonial',
