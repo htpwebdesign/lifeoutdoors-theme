@@ -17,43 +17,60 @@ get_header();
     <?php
     while ( have_posts() ) :
         the_post();
-
-        get_template_part( 'template-parts/content', 'page' );
-
-        // Check if the Advanced Custom Fields function exists.
-        if ( function_exists( 'get_field' ) ) { 
-            // Get fields values and display content if it exists. 
-            $policy_overview = get_field('policy_overview');
-            $policy_info = get_field('policy_info');
-
-            if ($policy_overview) :
-                ?>
-                <section class="policy-overview">
-                    <div class="policy-description">
-                        <?php echo $policy_overview; ?>
+    ?>
+        <article class="policy-template" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <header class="entry-header">
+                <?php if ( has_post_thumbnail() ) : ?>
+                    <div class="featureimage">
+                        <?php the_post_thumbnail(); ?>
                     </div>
-                </section>
-                <?php
-            endif;
+                <?php endif; ?>
+                <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+            </header><!-- .entry-header -->
 
-            if ($policy_info && is_array($policy_info)) :
+            <div class="entry-content">
+
+                <?php  
+                // Check if the Advanced Custom Fields function exists.
+                if ( function_exists( 'get_field' ) ) { 
+                    // Get fields values and display content if it exists. 
+                    $policy_overview = get_field('policy_overview');
+                    $policy_info = get_field('policy_info');
+
+                    if ( $policy_overview ) :
                 ?>
-                <section class="policy-info">
-                    <?php foreach ($policy_info as $info) : ?>
-                        <?php if (isset($info['subtitle']) && isset($info['description'])) : ?>
-                            <div class="policy-item">
-                                <h2><?php echo esc_html($info['subtitle']); ?></h2>
-                                <div class="policy-description">
-                                    <?php echo $info['description']; ?>
-                                </div>
+                        <section class="policy-overview">
+                            <div class="policy-description">
+                                <?php echo $policy_overview; ?>
                             </div>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </section>
+                        </section>
                 <?php
-            endif;
-        }            
+                    endif;
 
+                    if ( $policy_info && is_array( $policy_info ) ) :
+                ?>
+                        <section class="policy-info">
+                            <?php foreach ( $policy_info as $info ) : ?>
+                                <?php if ( isset( $info['subtitle'] ) && isset( $info['description'] ) ) : ?>
+                                    <div class="policy-item">
+                                        <h2><?php echo esc_html( $info['subtitle'] ); ?></h2>
+                                        <div class="policy-description">
+                                            <?php echo $info['description']; ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </section>
+                <?php
+                    endif;
+                } 
+                ?>
+
+           
+	        </div><!-- .entry-content -->       
+        </article><!-- #post -->
+
+    <?php
     endwhile; // End of the loop.
     ?>
 

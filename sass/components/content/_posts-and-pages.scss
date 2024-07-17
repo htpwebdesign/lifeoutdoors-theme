@@ -190,22 +190,21 @@
 }
 
 
-
-
 /* Media query for tablets  */
 @media (min-width: 768px) {
     .contact-info {
         grid-template-columns: 1fr 1fr; 
     }
 
-    #post-201 {
+    #post-201, #post-145, #post-103, #post-81, .policy-template {
         .entry-content, h1 {
         margin-left: 6rem;
         margin-right: 6rem;
         }
     }
-    
 }
+
+
 
 
 
