@@ -11,3 +11,12 @@
 .custom-logo-link {
 	display: inline-block;
 }
+
+
+.featureimage {
+    img {
+        height: 400px;
+        max-width: 100%;
+        object-fit: cover;
+    }
+}

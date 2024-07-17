@@ -4,10 +4,61 @@ h3,
 h4,
 h5,
 h6 {
-    line-height: $heading-line-height;   
+    line-height: $font__line-height-heading;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.375rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+footer {
+    h3 {
+        font-family: $font-family-footer-header;
+    }
+}
+
+.front-page {
+    h2,
+    h3 {
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        padding-bottom: .9375rem;
+    }
+
+    h3 {
+        font-size: 1rem;
+        // text-align: left;
+    }
+
+    
+    @media (min-width: 48rem) {
+        h2 {
+            font-size: 2rem;
+        }
+    }
+}
+
+.single-workshop {
+    h3 {
+        font-size: 1.25rem;
+    }
 }
 
 
-footer h3 {
-    font-family: $font-family-footer-header
+.tribe-common h1 {
+    font-weight: 700;
+    margin-bottom: 3.125rem;
 }
+

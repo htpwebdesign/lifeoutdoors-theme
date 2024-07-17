@@ -22,6 +22,7 @@
 	margin: 0 0 1.5em;
 }
 
+
 // homepage
 
 
@@ -39,68 +40,46 @@
 
 // products by categories
 .products-by-categories {
-	margin-top: 50px;
-	text-align: center;
-
-	h2 {
-		font-size: 2em;
-		margin-bottom: 20px;
-	}
+	margin-top: 3.125rem;
 
 	.category-products {
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-evenly;
 		flex-wrap: wrap;
 	}
 
 	.single-product {
-		width: 22%;
-		margin-bottom: 20px;
+		// width: 22%;
+		margin-bottom: 1.25rem;
 
 		img {
 			width: 100%;
 			height: auto;
 			object-fit: fill;
 		}
-
-		h3 {
-			margin-top: 10px;
-			font-size: 1.2em;
-		}
 	}
 }
 
-
 // on sale products
 .on-sale-products {
-	margin-top: 50px;
-	text-align: center;
-
-	h2 {
-		font-size: 2em;
-		margin-bottom: 20px;
-	}
+	margin-top: 3.125rem;
+    text-align: center;
 
 	.on-sale-slider {
 		.single-sale-product {
-			padding: 10px;
+			padding: .625rem;
 
 			img {
 				width: 100%;
 				height: auto;
 				object-fit: cover;
-			}
-
-			h3 {
-				margin-top: 10px;
-				font-size: 1.2em;
-			}
+			}	
 		}
 	}
 }
 
 .single-sale-product {
-	padding: 10px;
+	padding: .625rem;
 
 	img {
 		width: 100%;
@@ -108,26 +87,23 @@
 		object-fit: cover;
 	}
 
-	h3 {
-		margin-top: 10px;
-		font-size: 1.2em;
-	}
-
 	.price {
 		display: block;
-		margin: 10px 0;
+		margin: .625rem 0;
 		font-size: 1.2em;
 		color: #333;
+		text-align: center;
 	}
 
 	.button {
 		display: inline-block;
-		padding: 10px 20px;
+		padding: .625rem 1.25rem;
 		background-color: #000;
-		color: #fff;
+		color: $color__text_light;
 		text-align: center;
 		text-decoration: none;
-		margin-top: 10px;
+		margin-top: .625rem;
+		width: fit-content;
 
 		&:hover {
 			background-color: #444;
@@ -140,94 +116,148 @@
 .testimonials-container {
 	margin: 0 auto;
 	display: flex;
-	flex-direction: row;
-	gap: 1rem;
+	flex-direction: column;
+	gap: 1.5rem;
 	justify-content: center;
+	@media (min-width: 37.5rem) {
+		flex-direction: row;
+	}
 
 	figure {
-		width: 25%;
-		border: 1px solid #000;
-		margin: 1rem;
+		width: 100%;
+		border: 1px solid $color__text-main;
+        box-shadow: 5px 5px $color__background_header_footer;
+        
+		@media (min-width: 37.5rem) {
+			width: 25%;
+		}
+		// margin: 1rem;
 
 		blockquote {
-			padding: 1rem 0;
+			padding: 1rem .5rem;
 		}
+	}
+	.wp-block-pullquote{
+		padding: 3rem 0;
 	}
 }
 
 
 // workshops this month section
 .workshops-this-month {
-	margin-top: 50px;
-	text-align: center;
+    margin-top: 3.125rem;
+  
+    a,
+    a:visited {
+      text-decoration: none;
+      color: $color__text-main;
+  
+      &:hover {
+        color: $color__background_header_footer;
+      }
+    }
+  
+    .workshop-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .workshop-thumbnail {
+      text-align: center;
+    }
+  
+    .single-workshop {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 20px;
+      border: 1px solid $color__background_header_footer;
+      border-radius: 5px;
+      text-align: left;
+  
+      @media (min-width: 768px) {
+        width: 80%;
+      }
+  
+      @media (min-width: 1024px) {
+        width: 60%;
+      }
+  
+      h3 {
+        text-align: left;
+      }
+  
+      .workshop-date {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+        color: #666;
+      }
+  
+      .workshop-content {
+        display: flex;
+        flex-direction: column;
+  
+        @media (min-width: 768px) {
+          flex-direction: row;
+        }
+  
+  
+        .workshop-thumbnail {
+          flex: 0 0 auto;
+          margin-bottom: 15px;
+  
+          @media (min-width: 768px) {
+            margin-bottom: 0;
+            margin-right: 15px;
+          }
+  
+          img {
+            max-width: 100px; 
+            height: auto; 
+            border-radius: 5px; 
+          }
+        }
+  
+        .workshop-excerpt {
+          flex: 1 1 auto;
+          font-size: 1em;
+          color: #333;
+        }
+      }
+    }
+  }
+  
+  
+// contact us
 
-	h2 {
-		font-size: 2em;
-		margin-bottom: 20px;
-	}
 
-	.workshop-list {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
+.contact-info {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+}
 
-	.single-workshop {
-		width: 80%;
-		margin-bottom: 20px;
-		padding: 20px;
-		border: 1px solid #ccc;
-		border-radius: 5px;
-		text-align: left;
-		background-color: #f9f9f9;
+.visit, .hours {
+    box-sizing: border-box; 
+}
 
-		h3 {
-			font-size: 1.5em;
-			margin-bottom: 10px;
-		}
 
-		.workshop-date {
-			display: block;
-			margin-bottom: 10px;
-			font-size: 1.2em;
-			color: #666;
-		}
+/* Media query for tablets  */
+@media (min-width: 768px) {
+    .contact-info {
+        grid-template-columns: 1fr 1fr; 
+    }
 
-		.workshop-excerpt {
-			font-size: 1em;
-			color: #333;
-		}
-	}
+    #post-201, #post-145, #post-103, #post-81, .policy-template {
+        .entry-content, h1 {
+        margin-left: 6rem;
+        margin-right: 6rem;
+        }
+    }
 }
 
 
 
-// about page
-.company-about {
-	margin: 20px 0;
 
-	.company-description {
-		font-size: 1.2em;
-		line-height: 1.6;
-	}
-}
 
-.company-images {
-	margin: 20px 0;
-
-	.gallery {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 10px;
-
-		.gallery-item {
-			flex: 1 1 calc(33.333% - 10px);
-
-			img {
-				width: 100%;
-				height: auto;
-				display: block;
-			}
-		}
-	}
-}
