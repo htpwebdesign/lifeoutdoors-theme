@@ -249,7 +249,7 @@ add_action('wp_dashboard_setup', 'add_custom_dashboard_widgets');
 // Function to output the content of the custom widget
 function custom_dashboard_widget_content() {
     echo '<h3>Need help using wordpress?</h3>';
-    echo '<p>This document shows you how to add and edit events and products in WordPress.</p>';
+    echo '<p>This document shows you how to add events, products and testimonials to your online store.</p>';
     echo '<ul>
             <li><a href="https://lifeoutdoors.bcitwebdeveloper.ca/wp-content/uploads/2024/07/Life-Outdoors-Client-Tutorial-v2.pdf" target="_blank">Open User Manual</a></li>
           </ul>';
