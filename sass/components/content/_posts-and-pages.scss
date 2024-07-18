@@ -115,7 +115,7 @@
 	flex-direction: column;
 	gap: 1.5rem;
 	justify-content: center;
-	@media (min-width: 37.5rem) {
+	@media (min-width: 50rem) {
 		flex-direction: row;
 	}
 
@@ -124,7 +124,7 @@
 		border: 1px solid $color__text-main;
         box-shadow: 5px 5px $color__background_header_footer;
         
-		@media (min-width: 37.5rem) {
+		@media (min-width: 50rem) {
 			width: 25%;
 		}
 		// margin: 1rem;
