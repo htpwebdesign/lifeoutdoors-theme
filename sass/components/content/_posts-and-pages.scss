@@ -44,7 +44,7 @@
 
 	.category-products {
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: space-around;
 		flex-wrap: wrap;
 	}
 
@@ -70,7 +70,8 @@
 			padding: .625rem;
 
 			img {
-				width: 100%;
+				width: 65%;
+				margin: auto;
 				height: auto;
 				object-fit: cover;
 			}	
