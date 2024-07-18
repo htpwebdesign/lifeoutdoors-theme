@@ -219,25 +219,47 @@ function yoast_to_bottom(){
 }
 add_filter( 'wpseo_metabox_prio', 'yoast_to_bottom' );
 
-// Custom menu item for Client User manual
-function add_custom_admin_menu_item() {
-    add_menu_page(
-        'User Manual',
-        'User Manual',
-        'manage_options',
-        'user-manual',
-        'custom_admin_page',
-        'dashicons-media-document',
-        3
+/**
+ * Add custom dashboard widgets
+ */
+
+// Function to add custom dashboard widgets
+function add_custom_dashboard_widgets() {
+    wp_add_dashboard_widget(
+        'custom_dashboard_widget', // Widget slug (unique identifier).
+        'User Manual',             // Title of the widget.
+        'custom_dashboard_widget_content' // Function to display the widget's content.
     );
 }
-add_action('admin_menu', 'add_custom_admin_menu_item');
 
-function custom_admin_page() {
-    ?>
-    <div class="wrap">
-        <h1>User Manual</h1>
-        <p><a href="http://localhost:8888/lifeoutdoors/wp-content/uploads/2024/07/Life-Outdoors-Client-Tutorial.pdf" target="_blank">Download User Manual</a></p>
-    </div>
-    <?php
+// Hook the 'add_custom_dashboard_widgets' function into 'wp_dashboard_setup' action
+add_action('wp_dashboard_setup', 'add_custom_dashboard_widgets');
+
+// Function to output the content of the custom widget
+function custom_dashboard_widget_content() {
+    echo '<h3>Need help using wordpress?</h3>';
+    echo '<p>This document shows you how to add and edit events and products in WordPress.</p>';
+    echo '<ul>
+            <li><a href="http://localhost:8888/lifeoutdoors/wp-content/uploads/2024/07/Life-Outdoors-Client-Tutorial.pdf" target="_blank">Download User Manual</a></li>
+          </ul>';
 }
+
+// Function to display recent posts in a dashboard widget
+function recent_posts_dashboard_widget() {
+    $query = new WP_Query(array('posts_per_page' => 5));
+    if ($query->have_posts()) {
+        echo '<ul>';
+        while ($query->have_posts()) {
+            $query->the_post();
+            echo '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+        }
+        echo '</ul>';
+    } else {
+        echo '<p>No recent posts found.</p>';
+    }
+}
+
+function add_recent_posts_dashboard_widget() {
+    wp_add_dashboard_widget('recent_posts_dashboard_widget', 'Recent Posts', 'recent_posts_dashboard_widget');
+}
+add_action('wp_dashboard_setup', 'add_recent_posts_dashboard_widget');
