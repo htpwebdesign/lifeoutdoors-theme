@@ -19,3 +19,20 @@ input[type="submit"] {
 		border-color: $color__border-button-focus;
 	}
 }
+
+
+.wp-block-button__link {
+    background-color: $color__background-button;
+    border-radius: 0;
+}
+
+.wpforms-container-full {
+    input[type=submit] {
+      background-color: $color__background-button !important;
+    
+    }
+  }
+
+  .wpforms-form button[type=submit] {
+	background-color: #266433 !important;
+}  
