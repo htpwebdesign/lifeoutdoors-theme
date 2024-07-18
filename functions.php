@@ -282,3 +282,42 @@ function fwd_excerpt_more( $more ) {
     return $more;
 }
 add_filter( 'excerpt_more', 'fwd_excerpt_more' );
+
+// Change the Login Logo and style the page
+function my_login_logo() { ?>
+    <style type="text/css">
+        #login h1 a, .login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/logo-color.png);
+			height:200px;
+			width:320px;
+			background-size: 320px 330px;
+			background-repeat: no-repeat;
+			background-color: white;
+			border-radius: 50em;
+			background-position: center;
+        }
+		.wp-core-ui .button, .wp-core-ui .button.button-large, .wp-core-ui .button.button-small, a.preview, input#publish, input#save-post{
+			background-color: #266433;
+		}
+		.login label{
+			color: #266433;
+		}
+		.dashicons-visibility:before{
+			color: #266433;
+		}
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'Your Site Name and Info';
+}
+add_filter( 'login_headertext', 'my_login_logo_url_title' );
+
+
+
