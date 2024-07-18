@@ -330,7 +330,7 @@
 		.footer-center-2 {
 			display: flex;
 			flex-direction: column;
-			align-items: center;
+			align-items: left;
 			// gap: 4rem;
 
 			ul {
@@ -338,7 +338,7 @@
 				padding: 0;
 			}
 			li, h3 {
-				text-align: center;
+				text-align: left;
 			}
 		}
 
