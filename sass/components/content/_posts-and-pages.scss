@@ -70,7 +70,7 @@
 			padding: .625rem;
 
 			img {
-				width: 65%;
+				width: 55%;
 				margin: auto;
 				height: auto;
 				object-fit: cover;
@@ -99,7 +99,7 @@
 	.button {
 		display: inline-block;
 		padding: .625rem 1.25rem;
-		background-color: #000;
+		background-color: $color__background-button;
 		color: $color__text_light;
 		text-align: center;
 		text-decoration: none;
