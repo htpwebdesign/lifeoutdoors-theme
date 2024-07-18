@@ -20,8 +20,7 @@ get_header();
 			<div class="page-content">
 				<p><?php esc_html_e( "It looks like the page you are looking for doesn't exist. But don't worry, you can continue shopping by clicking the link below.", 'lifeoutdoors-theme' ); ?></p>
 			</div>
-			<a class="continue-shopping" href="<?php echo home_url(); ?>">Continue Shopping</a>
-
+            <a class="continue-shopping" href="<?php echo esc_url( home_url() ); ?>">Continue Shopping</a>
 					
 					<!-- .page-content -->
 		</section><!-- .error-404 -->
