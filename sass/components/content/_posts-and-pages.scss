@@ -2,11 +2,6 @@
 	display: block;
 }
 
-.post,
-.page {
-	margin: 0 0 1.5em;
-}
-
 .updated:not(.published) {
 	display: none;
 }
@@ -257,3 +252,34 @@
         }
     }
 }
+
+// 404 - Page Not Found
+.error-404{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	a {
+		font-size: 16px;
+		font-weight: 400;
+		color: white;
+		background-color: #328544;
+		padding: 15px;
+		border-radius: 50em;
+	}
+	a:hover{
+		color: #328544;
+		background-color: white;
+		border: #328544 solid 2px;
+	}
+}
+
+.page-content p{
+text-align: center;
+}
+
+.page-header h1{
+	text-align: center;
+}
+
