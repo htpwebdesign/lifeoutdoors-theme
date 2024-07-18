@@ -284,9 +284,9 @@
 				flex-direction: row;
 				gap: 4rem;
 			}
-			a:hover {
-				background-color: $color__text_light;
-				color: $color__background_header_footer;
+			.footer-menus a:hover:not(.footer-left a) {
+                background-color: $color__text_light;
+                color: $color__background_header_footer;
 		}
 		}
 }
