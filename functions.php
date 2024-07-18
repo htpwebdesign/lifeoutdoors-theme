@@ -274,3 +274,11 @@ function add_recent_posts_dashboard_widget() {
     wp_add_dashboard_widget('recent_posts_dashboard_widget', 'Recent Posts', 'recent_posts_dashboard_widget');
 }
 add_action('wp_dashboard_setup', 'add_recent_posts_dashboard_widget');
+
+
+// Change the excerpt more text 
+function fwd_excerpt_more( $more ) {
+    $more = '...  <a href="'. esc_url(get_permalink()) . '">'. __( 'Find Out More') .'</a>';
+    return $more;
+}
+add_filter( 'excerpt_more', 'fwd_excerpt_more' );
