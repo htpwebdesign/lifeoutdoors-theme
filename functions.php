@@ -218,3 +218,26 @@ function yoast_to_bottom(){
 	return 'low';
 }
 add_filter( 'wpseo_metabox_prio', 'yoast_to_bottom' );
+
+// Custom menu item for Client User manual
+function add_custom_admin_menu_item() {
+    add_menu_page(
+        'User Manual',
+        'User Manual',
+        'manage_options',
+        'user-manual',
+        'custom_admin_page',
+        'dashicons-media-document',
+        3
+    );
+}
+add_action('admin_menu', 'add_custom_admin_menu_item');
+
+function custom_admin_page() {
+    ?>
+    <div class="wrap">
+        <h1>User Manual</h1>
+        <p><a href="http://localhost:8888/lifeoutdoors/wp-content/uploads/2024/07/Life-Outdoors-Client-Tutorial.pdf" target="_blank">Download User Manual</a></p>
+    </div>
+    <?php
+}
