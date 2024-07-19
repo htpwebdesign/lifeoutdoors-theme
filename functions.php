@@ -385,3 +385,12 @@ function remove_dashboard_widgets() {
 
 // Hook the 'remove_dashboard_widgets' function into 'wp_dashboard_setup' action
 add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
+
+
+/**
+ * Registers an editor stylesheet for the theme.
+ */
+function wpdocs_theme_add_editor_styles() {
+    add_editor_style( 'custom-editor-style.css' );
+}
+add_action( 'admin_init', 'wpdocs_theme_add_editor_styles' );
