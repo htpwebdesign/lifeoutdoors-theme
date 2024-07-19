@@ -387,6 +387,14 @@ function remove_dashboard_widgets() {
 add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 
 
+/**
+ * Registers an editor stylesheet for the theme.
+ */
+function wpdocs_theme_add_editor_styles() {
+    add_editor_style( 'custom-editor-style.css' );
+}
+add_action( 'admin_init', 'wpdocs_theme_add_editor_styles' );
+
 
 // Eliminate posts and comments menu items
 function eliminate_admin_menus() {
