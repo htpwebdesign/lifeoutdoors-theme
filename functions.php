@@ -320,4 +320,24 @@ function my_login_logo_url_title() {
 add_filter( 'login_headertext', 'my_login_logo_url_title' );
 
 
+/**
+ * Remove dashboard widgets
+ */
+
+// Function to remove dashboard widgets
+function remove_dashboard_widgets() {
+
+    remove_action('welcome_panel', 'wp_welcome_panel');   // Welcome Panel
+
+    remove_meta_box('dashboard_quick_press', 'dashboard', 'side');   // Quick Press
+    remove_meta_box('dashboard_primary', 'dashboard', 'side');       // WordPress blog
+    remove_meta_box( 'recent_posts_dashboard_widget', 'dashboard', 'normal'); // Recent Posts
+    remove_meta_box( 'tribe_dashboard_widget', 'dashboard', 'normal'); // News Events Calendar
+    remove_meta_box( 'wpseo-dashboard-overview', 'dashboard', 'side'); // Yoast SEO Post Overview
+    remove_meta_box( 'wpseo-wincher-dashboard-overview', 'dashboard', 'side'); // Yoast SEO Top Keyphrases
+    remove_meta_box('wpforms_reports_widget_lite', 'dashboard', 'normal');  // WPForms reports widget
+}
+
+// Hook the 'remove_dashboard_widgets' function into 'wp_dashboard_setup' action
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 
