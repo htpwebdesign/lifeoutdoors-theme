@@ -319,5 +319,14 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertext', 'my_login_logo_url_title' );
 
-
-
+// Remove Block Editor from Pages/Posts
+function fwd_post_filter( $use_block_editor, $post ) {
+    // Add IDs to the array
+    $page_ids = array( 69 , 145 , 3 , 20 , 13 , 99 );
+    if ( in_array( $post->ID, $page_ids ) ) {
+        return false;
+    } else {
+        return $use_block_editor;
+    }
+}
+add_filter( 'use_block_editor_for_post', 'fwd_post_filter', 10, 2 );
