@@ -320,4 +320,33 @@ function my_login_logo_url_title() {
 add_filter( 'login_headertext', 'my_login_logo_url_title' );
 
 
+add_filter('acf/fields/wysiwyg/toolbars', 'my_toolbars');
+function my_toolbars($toolbars)
+{
 
+    // Add a new toolbar called "Very Simple"
+    // - this toolbar has only 1 row of buttons
+    $toolbars['Very Simple'] = array();
+    $toolbars['Very Simple'][1] = array('bold', 'italic', 'underline');
+
+    // Remove 'fullscreen', 'wp_more', 'bullist', and 'numlist' from the 'Full' toolbar
+    
+    if (($key = array_search('fullscreen', $toolbars['Full'][1])) !== false) {
+        unset($toolbars['Full'][1][$key]);
+    }
+    if (($key = array_search('wp_more', $toolbars['Full'][1])) !== false) {
+        unset($toolbars['Full'][1][$key]);
+    }
+    if (($key = array_search('bullist', $toolbars['Full'][1])) !== false) {
+        unset($toolbars['Full'][1][$key]);
+    }
+    if (($key = array_search('numlist', $toolbars['Full'][1])) !== false) {
+        unset($toolbars['Full'][1][$key]);
+    }
+
+    // Remove the 'Basic' toolbar completely
+    unset($toolbars['Basic']);
+
+    // Return $toolbars - IMPORTANT!
+    return $toolbars;
+}
