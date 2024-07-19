@@ -319,6 +319,7 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertext', 'my_login_logo_url_title' );
 
+
 // Remove Block Editor from Pages/Posts
 function fwd_post_filter( $use_block_editor, $post ) {
     // Add IDs to the array
@@ -330,3 +331,57 @@ function fwd_post_filter( $use_block_editor, $post ) {
     }
 }
 add_filter( 'use_block_editor_for_post', 'fwd_post_filter', 10, 2 );
+
+
+add_filter('acf/fields/wysiwyg/toolbars', 'my_toolbars');
+function my_toolbars($toolbars)
+{
+
+    // Add a new toolbar called "Very Simple"
+    // - this toolbar has only 1 row of buttons
+    $toolbars['Very Simple'] = array();
+    $toolbars['Very Simple'][1] = array('bold', 'italic', 'underline');
+
+    // Remove 'fullscreen', 'wp_more', 'bullist', and 'numlist' from the 'Full' toolbar
+    
+    if (($key = array_search('fullscreen', $toolbars['Full'][1])) !== false) {
+        unset($toolbars['Full'][1][$key]);
+    }
+    if (($key = array_search('wp_more', $toolbars['Full'][1])) !== false) {
+        unset($toolbars['Full'][1][$key]);
+    }
+    if (($key = array_search('bullist', $toolbars['Full'][1])) !== false) {
+        unset($toolbars['Full'][1][$key]);
+    }
+    if (($key = array_search('numlist', $toolbars['Full'][1])) !== false) {
+        unset($toolbars['Full'][1][$key]);
+    }
+
+    // Remove the 'Basic' toolbar completely
+    unset($toolbars['Basic']);
+
+    // Return $toolbars - IMPORTANT!
+    return $toolbars;
+}
+
+
+/**
+ * Remove dashboard widgets
+ */
+
+// Function to remove dashboard widgets
+function remove_dashboard_widgets() {
+
+    remove_action('welcome_panel', 'wp_welcome_panel');   // Welcome Panel
+
+    remove_meta_box('dashboard_quick_press', 'dashboard', 'side');   // Quick Press
+    remove_meta_box('dashboard_primary', 'dashboard', 'side');       // WordPress blog
+    remove_meta_box( 'recent_posts_dashboard_widget', 'dashboard', 'normal'); // Recent Posts
+    remove_meta_box( 'tribe_dashboard_widget', 'dashboard', 'normal'); // News Events Calendar
+    remove_meta_box( 'wpseo-dashboard-overview', 'dashboard', 'side'); // Yoast SEO Post Overview
+    remove_meta_box( 'wpseo-wincher-dashboard-overview', 'dashboard', 'side'); // Yoast SEO Top Keyphrases
+    remove_meta_box('wpforms_reports_widget_lite', 'dashboard', 'normal');  // WPForms reports widget
+}
+
+// Hook the 'remove_dashboard_widgets' function into 'wp_dashboard_setup' action
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
