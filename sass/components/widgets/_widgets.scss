@@ -6,3 +6,12 @@
 		max-width: 100%;
 	}
 }
+
+.widget-area {
+    display: none;
+    
+    @media (min-width: 37.5rem) {
+      display: block;
+    }
+  }
+  
