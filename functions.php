@@ -323,7 +323,7 @@ add_filter( 'login_headertext', 'my_login_logo_url_title' );
 // Remove Block Editor from Pages/Posts
 function fwd_post_filter( $use_block_editor, $post ) {
     // Add IDs to the array
-    $page_ids = array( 69 , 145 , 3 , 20 , 13 , 99 );
+    $page_ids = array( 69 , 145 , 3 , 20 , 13 , 99 , 103  );
     if ( in_array( $post->ID, $page_ids ) ) {
         return false;
     } else {
@@ -385,3 +385,13 @@ function remove_dashboard_widgets() {
 
 // Hook the 'remove_dashboard_widgets' function into 'wp_dashboard_setup' action
 add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
+
+
+
+// Eliminate posts and comments menu items
+function eliminate_admin_menus() {
+	remove_menu_page('edit.php');
+    remove_menu_page('edit-comments.php');
+}
+add_action('admin_menu', 'eliminate_admin_menus');
+
