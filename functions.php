@@ -333,41 +333,41 @@ function fwd_post_filter( $use_block_editor, $post ) {
 add_filter( 'use_block_editor_for_post', 'fwd_post_filter', 10, 2 );
 
 
+
 add_filter('acf/fields/wysiwyg/toolbars', 'my_toolbars');
 function my_toolbars($toolbars)
 {
 
-    // Add a new toolbar called "Very Simple"
-    // - this toolbar has only 1 row of buttons
-    $toolbars['Very Simple'] = array();
-    $toolbars['Very Simple'][1] = array('bold', 'italic', 'underline');
+// Add a new toolbar called "Very Simple"
+// - this toolbar has only 1 row of buttons
+$toolbars['Very Simple'] = array();
+$toolbars['Very Simple'][1] = array('bold', 'italic', 'underline');
 
-    // Remove 'fullscreen', 'wp_more', 'bullist', and 'numlist' from the 'Full' toolbar
+// Remove 'fullscreen', 'wp_more', 'bullist', and 'numlist' from the 'Full' toolbar
     
-    if (($key = array_search('fullscreen', $toolbars['Full'][1])) !== false) {
-        unset($toolbars['Full'][1][$key]);
-    }
-    if (($key = array_search('wp_more', $toolbars['Full'][1])) !== false) {
-        unset($toolbars['Full'][1][$key]);
-    }
-    if (($key = array_search('bullist', $toolbars['Full'][1])) !== false) {
-        unset($toolbars['Full'][1][$key]);
-    }
-    if (($key = array_search('numlist', $toolbars['Full'][1])) !== false) {
-        unset($toolbars['Full'][1][$key]);
-    }
+if (($key = array_search('fullscreen', $toolbars['Full'][1])) !== false) {
+    unset($toolbars['Full'][1][$key]);
+}
+if (($key = array_search('wp_more', $toolbars['Full'][1])) !== false) {
+    unset($toolbars['Full'][1][$key]);
+}
+if (($key = array_search('bullist', $toolbars['Full'][1])) !== false) {
+    unset($toolbars['Full'][1][$key]);
+}
+if (($key = array_search('numlist', $toolbars['Full'][1])) !== false) {
+    unset($toolbars['Full'][1][$key]);
+}
 
-    // Remove the 'Basic' toolbar completely
-    unset($toolbars['Basic']);
+// Remove the 'Basic' toolbar completely
+unset($toolbars['Basic']);
 
-    // Return $toolbars - IMPORTANT!
-    return $toolbars;
+// Return $toolbars - IMPORTANT!
+return $toolbars;
 }
 
 
-/**
- * Remove dashboard widgets
- */
+
+ // Remove dashboard widgets
 
 // Function to remove dashboard widgets
 function remove_dashboard_widgets() {
@@ -387,19 +387,19 @@ function remove_dashboard_widgets() {
 add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
 
 
-/**
- * Registers an editor stylesheet for the theme.
- */
+
+// Registers an editor stylesheet for the theme.
+ 
 function wpdocs_theme_add_editor_styles() {
     add_editor_style( 'custom-editor-style.css' );
 }
 add_action( 'admin_init', 'wpdocs_theme_add_editor_styles' );
 
 
-// Eliminate posts and comments menu items
+ // Eliminate posts and comments menu items
+
 function eliminate_admin_menus() {
 	remove_menu_page('edit.php');
     remove_menu_page('edit-comments.php');
 }
 add_action('admin_menu', 'eliminate_admin_menus');
-
