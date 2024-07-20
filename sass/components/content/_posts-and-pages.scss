@@ -21,15 +21,16 @@
 
 // Hero image slider
 .image-slider {
-	width: 70%;
-	margin: 0 auto;
-}
-
-.image-slider img {
-	width: 100%;
-	height: 400px;
-	object-fit: cover;
-}
+    width: 70%;
+    margin: 0 auto;
+  
+    img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+  }
+  
 
 // Products by categories
 .products-by-categories {
