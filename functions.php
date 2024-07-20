@@ -403,3 +403,33 @@ function eliminate_admin_menus() {
     remove_menu_page('edit-comments.php');
 }
 add_action('admin_menu', 'eliminate_admin_menus');
+
+
+// change orders of menu items
+function custom_menu_order($menu_order) {
+    if (!$menu_order) return true;
+	// display default order if there's no new given orders by user
+    
+    return array(
+        'index.php', // Dashboard
+        'separator1', // Separator
+        'woo-orders-tracking', // Orders Tracking
+        'woocommerce', // WooCommerce
+        'edit.php?post_type=product', // Products
+        'edit.php?post_type=tribe_events', // Events
+        'edit.php?post_type=out-testimonial', // Testimonials
+        'woocommerce-marketing', // Marketing
+        'separator2', // Separator
+        'edit.php?post_type=page', // Pages
+        'upload.php', // Media
+        'wpforms-overview', // WPForms
+        'wpseo_dashboard', // Yoast SEO
+        'getwooplugins', // GetWooPlugins
+    );
+}
+
+// let user have authority to edit menu order
+add_filter('custom_menu_order', 'custom_menu_order');
+
+// // finish editing menu order
+add_filter('menu_order', 'custom_menu_order');
