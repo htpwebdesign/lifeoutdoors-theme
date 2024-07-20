@@ -2,11 +2,6 @@
 	display: block;
 }
 
-.post,
-.page {
-	margin: 0 0 1.5em;
-}
-
 .updated:not(.published) {
 	display: none;
 }
@@ -22,34 +17,32 @@
 	margin: 0 0 1.5em;
 }
 
+// Homepage
 
-// homepage
-
-
-// hero image slider
+// Hero image slider
 .image-slider {
-	width: 70%;
-	margin: 0 auto;
-}
+    width: 70%;
+    margin: 0 auto;
+  
+    img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+  }
+  
 
-.image-slider img {
-	width: 100%;
-	height: 400px;
-	object-fit: cover;
-}
-
-// products by categories
+// Products by categories
 .products-by-categories {
 	margin-top: 3.125rem;
 
 	.category-products {
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: space-around;
 		flex-wrap: wrap;
 	}
 
 	.single-product {
-		// width: 22%;
 		margin-bottom: 1.25rem;
 
 		img {
@@ -60,7 +53,7 @@
 	}
 }
 
-// on sale products
+// On sale products
 .on-sale-products {
 	margin-top: 3.125rem;
     text-align: center;
@@ -70,7 +63,8 @@
 			padding: .625rem;
 
 			img {
-				width: 100%;
+				width: 55%;
+				margin: auto;
 				height: auto;
 				object-fit: cover;
 			}	
@@ -98,7 +92,7 @@
 	.button {
 		display: inline-block;
 		padding: .625rem 1.25rem;
-		background-color: #000;
+		background-color: $color__background-button;
 		color: $color__text_light;
 		text-align: center;
 		text-decoration: none;
@@ -111,15 +105,14 @@
 	}
 }
 
-// testimonials 
-
+// Testimonials 
 .testimonials-container {
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
 	justify-content: center;
-	@media (min-width: 37.5rem) {
+	@media (min-width: 50rem) {
 		flex-direction: row;
 	}
 
@@ -128,10 +121,9 @@
 		border: 1px solid $color__text-main;
         box-shadow: 5px 5px $color__background_header_footer;
         
-		@media (min-width: 37.5rem) {
+		@media (min-width: 50rem) {
 			width: 25%;
 		}
-		// margin: 1rem;
 
 		blockquote {
 			padding: 1rem .5rem;
@@ -142,8 +134,7 @@
 	}
 }
 
-
-// workshops this month section
+// Workshops section
 .workshops-this-month {
     margin-top: 3.125rem;
   
@@ -169,17 +160,17 @@
   
     .single-workshop {
       width: 100%;
-      margin-bottom: 20px;
-      padding: 20px;
+      margin-bottom: 1.25rem;
+      padding: 1.25rem;
       border: 1px solid $color__background_header_footer;
       border-radius: 5px;
       text-align: left;
   
-      @media (min-width: 768px) {
+      @media (min-width: 48rem) {
         width: 80%;
       }
   
-      @media (min-width: 1024px) {
+      @media (min-width: 64rem) {
         width: 60%;
       }
   
@@ -189,7 +180,7 @@
   
       .workshop-date {
         display: block;
-        margin-bottom: 10px;
+        margin-bottom: .625rem;
         font-size: 1.2em;
         color: #666;
       }
@@ -198,18 +189,17 @@
         display: flex;
         flex-direction: column;
   
-        @media (min-width: 768px) {
+        @media (min-width: 48rem) {
           flex-direction: row;
         }
   
-  
         .workshop-thumbnail {
           flex: 0 0 auto;
-          margin-bottom: 15px;
+          margin-bottom: .9375rem;
   
-          @media (min-width: 768px) {
+          @media (min-width: 48rem) {
             margin-bottom: 0;
-            margin-right: 15px;
+            margin-right: .9375rem;
           }
   
           img {
@@ -228,23 +218,19 @@
     }
   }
   
-  
-// contact us
-
-
+// Contact us
 .contact-info {
     display: grid;
     grid-template-columns: 1fr; 
-    gap: 20px; 
+    gap: 1.25rem; 
 }
 
 .visit, .hours {
     box-sizing: border-box; 
 }
 
-
 /* Media query for tablets  */
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
     .contact-info {
         grid-template-columns: 1fr 1fr; 
     }
@@ -257,7 +243,38 @@
     }
 }
 
+// 404 - Page Not Found
+.error-404{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
+	a {
+		font-size: 1rem;
+		font-weight: 400;
+		color: white;
+		background-color: #328544;
+		padding: .9375rem;
+		border-radius: 50em;
+	}
+	a:hover{
+		color: #328544;
+		background-color: white;
+		border: #328544 solid 2px;
+	}
+}
 
+.page-content p{
+text-align: center;
+}
 
+.page-header h1{
+	text-align: center;
+}
 
+// Slick slider
+.image-slider .slick-dots li button:before,
+.on-sale-slider .slick-dots li button:before {
+    font-size: .75rem;
+}

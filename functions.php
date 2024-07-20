@@ -116,8 +116,19 @@ add_action( 'after_setup_theme', 'lifeoutdoors_theme_content_width', 0 );
 function lifeoutdoors_theme_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'lifeoutdoors-theme' ),
+			'name'          => esc_html__( 'Sidebar 1', 'lifeoutdoors-theme' ),
 			'id'            => 'sidebar-1',
+			'description'   => esc_html__( 'Add widgets here.', 'lifeoutdoors-theme' ),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+    register_sidebar(
+		array(
+			'name'          => esc_html__( 'Sidebar 2', 'lifeoutdoors-theme' ),
+			'id'            => 'sidebar-2',
 			'description'   => esc_html__( 'Add widgets here.', 'lifeoutdoors-theme' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
@@ -218,3 +229,207 @@ function yoast_to_bottom(){
 	return 'low';
 }
 add_filter( 'wpseo_metabox_prio', 'yoast_to_bottom' );
+
+/**
+ * Add custom dashboard widgets
+ */
+
+// Function to add custom dashboard widgets
+function add_custom_dashboard_widgets() {
+    wp_add_dashboard_widget(
+        'custom_dashboard_widget', // Widget slug (unique identifier).
+        'User Manual',             // Title of the widget.
+        'custom_dashboard_widget_content' // Function to display the widget's content.
+    );
+}
+
+// Hook the 'add_custom_dashboard_widgets' function into 'wp_dashboard_setup' action
+add_action('wp_dashboard_setup', 'add_custom_dashboard_widgets');
+
+// Function to output the content of the custom widget
+function custom_dashboard_widget_content() {
+    echo '<h3>Need help using wordpress?</h3>';
+    echo '<p>This document shows you how to add events, products and testimonials to your online store.</p>';
+    echo '<ul>
+            <li><a href="https://lifeoutdoors.bcitwebdeveloper.ca/wp-content/uploads/2024/07/Life-Outdoors-Client-Tutorial-v2.pdf" target="_blank">Open User Manual</a></li>
+          </ul>';
+}
+
+// Function to display recent posts in a dashboard widget
+function recent_posts_dashboard_widget() {
+    $query = new WP_Query(array('posts_per_page' => 5));
+    if ($query->have_posts()) {
+        echo '<ul>';
+        while ($query->have_posts()) {
+            $query->the_post();
+            echo '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+        }
+        echo '</ul>';
+    } else {
+        echo '<p>No recent posts found.</p>';
+    }
+}
+
+function add_recent_posts_dashboard_widget() {
+    wp_add_dashboard_widget('recent_posts_dashboard_widget', 'Recent Posts', 'recent_posts_dashboard_widget');
+}
+add_action('wp_dashboard_setup', 'add_recent_posts_dashboard_widget');
+
+
+// Change the excerpt more text 
+function fwd_excerpt_more( $more ) {
+    $more = '...  <a href="'. esc_url(get_permalink()) . '">'. __( 'Find Out More') .'</a>';
+    return $more;
+}
+add_filter( 'excerpt_more', 'fwd_excerpt_more' );
+
+// Change the Login Logo and style the page
+function my_login_logo() { ?>
+    <style type="text/css">
+        #login h1 a, .login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/logo-color.png);
+			height:200px;
+			width:320px;
+			background-size: 320px 330px;
+			background-repeat: no-repeat;
+			background-color: white;
+			border-radius: 50em;
+			background-position: center;
+        }
+		.wp-core-ui .button, .wp-core-ui .button.button-large, .wp-core-ui .button.button-small, a.preview, input#publish, input#save-post{
+			background-color: #266433;
+		}
+		.login label{
+			color: #266433;
+		}
+		.dashicons-visibility:before{
+			color: #266433;
+		}
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+function my_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'Your Site Name and Info';
+}
+add_filter( 'login_headertext', 'my_login_logo_url_title' );
+
+
+// Remove Block Editor from Pages/Posts
+function fwd_post_filter( $use_block_editor, $post ) {
+    // Add IDs to the array
+    $page_ids = array( 69 , 145 , 3 , 20 , 13 , 99 , 103  );
+    if ( in_array( $post->ID, $page_ids ) ) {
+        return false;
+    } else {
+        return $use_block_editor;
+    }
+}
+add_filter( 'use_block_editor_for_post', 'fwd_post_filter', 10, 2 );
+
+
+
+add_filter('acf/fields/wysiwyg/toolbars', 'my_toolbars');
+function my_toolbars($toolbars)
+{
+
+// Add a new toolbar called "Very Simple"
+// - this toolbar has only 1 row of buttons
+$toolbars['Very Simple'] = array();
+$toolbars['Very Simple'][1] = array('bold', 'italic', 'underline');
+
+// Remove 'fullscreen', 'wp_more', 'bullist', and 'numlist' from the 'Full' toolbar
+    
+if (($key = array_search('fullscreen', $toolbars['Full'][1])) !== false) {
+    unset($toolbars['Full'][1][$key]);
+}
+if (($key = array_search('wp_more', $toolbars['Full'][1])) !== false) {
+    unset($toolbars['Full'][1][$key]);
+}
+if (($key = array_search('bullist', $toolbars['Full'][1])) !== false) {
+    unset($toolbars['Full'][1][$key]);
+}
+if (($key = array_search('numlist', $toolbars['Full'][1])) !== false) {
+    unset($toolbars['Full'][1][$key]);
+}
+
+// Remove the 'Basic' toolbar completely
+unset($toolbars['Basic']);
+
+// Return $toolbars - IMPORTANT!
+return $toolbars;
+}
+
+
+
+ // Remove dashboard widgets
+
+// Function to remove dashboard widgets
+function remove_dashboard_widgets() {
+
+    remove_action('welcome_panel', 'wp_welcome_panel');   // Welcome Panel
+
+    remove_meta_box('dashboard_quick_press', 'dashboard', 'side');   // Quick Press
+    remove_meta_box('dashboard_primary', 'dashboard', 'side');       // WordPress blog
+    remove_meta_box( 'recent_posts_dashboard_widget', 'dashboard', 'normal'); // Recent Posts
+    remove_meta_box( 'tribe_dashboard_widget', 'dashboard', 'normal'); // News Events Calendar
+    remove_meta_box( 'wpseo-dashboard-overview', 'dashboard', 'side'); // Yoast SEO Post Overview
+    remove_meta_box( 'wpseo-wincher-dashboard-overview', 'dashboard', 'side'); // Yoast SEO Top Keyphrases
+    remove_meta_box('wpforms_reports_widget_lite', 'dashboard', 'normal');  // WPForms reports widget
+}
+
+// Hook the 'remove_dashboard_widgets' function into 'wp_dashboard_setup' action
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets');
+
+
+
+// Registers an editor stylesheet for the theme.
+ 
+function wpdocs_theme_add_editor_styles() {
+    add_editor_style( 'custom-editor-style.css' );
+}
+add_action( 'admin_init', 'wpdocs_theme_add_editor_styles' );
+
+
+ // Eliminate posts and comments menu items
+
+function eliminate_admin_menus() {
+	remove_menu_page('edit.php');
+    remove_menu_page('edit-comments.php');
+}
+add_action('admin_menu', 'eliminate_admin_menus');
+
+
+// change orders of menu items
+function custom_menu_order($menu_order) {
+    if (!$menu_order) return true;
+	// display default order if there's no new given orders by user
+    
+    return array(
+        'index.php', // Dashboard
+        'separator1', // Separator
+        'woo-orders-tracking', // Orders Tracking
+        'woocommerce', // WooCommerce
+        'edit.php?post_type=product', // Products
+        'edit.php?post_type=tribe_events', // Events
+        'edit.php?post_type=out-testimonial', // Testimonials
+        'woocommerce-marketing', // Marketing
+        'separator2', // Separator
+        'edit.php?post_type=page', // Pages
+        'upload.php', // Media
+        'wpforms-overview', // WPForms
+        'wpseo_dashboard', // Yoast SEO
+        'getwooplugins', // GetWooPlugins
+    );
+}
+
+// let user have authority to edit menu order
+add_filter('custom_menu_order', 'custom_menu_order');
+
+// // finish editing menu order
+add_filter('menu_order', 'custom_menu_order');

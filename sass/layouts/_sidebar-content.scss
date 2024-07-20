@@ -1,27 +1,41 @@
-.site {
-	display: grid;
-	grid-template-columns: ($size__site-sidebar) auto;
-	grid-template-areas:
-		"header header"
-		"sidebar main"
-		"footer footer";
+.wpfMainWrapper {
+    display: none;
+    
+    @media (min-width: 37.5rem) {
+      display: block;
+    }
 }
+  
+@media (min-width: 37.5rem) {
 
-.site-header {
-	grid-area: header;
-}
+    .archive.tax-product_cat,
+    .post-type-archive-product {
+        .site {
+            display: grid;
+            grid-template-columns: ($size__site-sidebar) auto;
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "footer footer";
+        }
 
-.site-main {
-	grid-area: main;
-	overflow: hidden; /* Resolves issue with <pre> elements forcing full width. */
-}
+        .site-header {
+            grid-area: header;
+        }
 
-.widget-area {
-	grid-area: sidebar;
-}
+        .site-main {
+            grid-area: main;
+            overflow: hidden; /* Resolves issue with <pre> elements forcing full width. */
+        }
 
-.site-footer {
-	grid-area: footer;
-}
+        .widget-area {
+            grid-area: sidebar;
+        }
+
+        .site-footer {
+            grid-area: footer;
+        }
+    }
+}    
 
 @import "no-sidebar";
